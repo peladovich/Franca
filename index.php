@@ -21,7 +21,7 @@ require __DIR__ . '/includes/header.php';
       <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-2"><?= e(t('home.hero_title')) ?></h1>
       <p class="font-body-lg text-white/90 mb-md max-w-md"><?= e(t('home.hero_subtitle')) ?></p>
       <div class="flex gap-sm">
-        <a href="<?= BASE_URL ?>/menu.php" class="bg-primary text-on-primary px-md py-3 rounded-lg font-label-md hover:shadow-lg transition-shadow"><?= e(t('home.view_menu')) ?></a>
+        <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-primary text-on-primary px-md py-3 rounded-lg font-label-md"><?= e(t('home.view_menu')) ?></a>
         <a href="<?= BASE_URL ?>/reservations.php" class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-md py-3 rounded-lg font-label-md hover:bg-white/30 transition-all"><?= e(t('home.book_table')) ?></a>
       </div>
     </div>
@@ -71,7 +71,7 @@ require __DIR__ . '/includes/header.php';
           <?= csrf_field() ?>
           <input type="hidden" name="menu_item_id" value="<?= (int)$item['id'] ?>">
           <input type="hidden" name="action" value="add">
-          <button class="w-full border border-secondary text-secondary py-2 rounded-lg font-label-md hover:bg-secondary-container transition-colors" type="submit"><?= e(t('home.add_to_bag')) ?></button>
+          <button class="btn-lift w-full border border-secondary text-secondary py-2 rounded-lg font-label-md hover:bg-secondary-container transition-colors" type="submit"><?= e(t('home.add_to_bag')) ?></button>
         </form>
       </div>
     </div>
@@ -114,7 +114,7 @@ require __DIR__ . '/includes/header.php';
     <form method="post" action="<?= BASE_URL ?>/newsletter.php" class="flex flex-col sm:flex-row gap-sm">
       <?= csrf_field() ?>
       <input class="flex-1 bg-white border-none rounded-lg px-md py-3 focus:ring-2 focus:ring-secondary transition-all" placeholder="<?= e(t('home.email_placeholder')) ?>" type="email" name="email" required>
-      <button class="bg-primary text-on-primary px-lg py-3 rounded-lg font-label-md" type="submit"><?= e(t('home.join')) ?></button>
+      <button class="btn-lift bg-primary text-on-primary px-lg py-3 rounded-lg font-label-md" type="submit"><?= e(t('home.join')) ?></button>
     </form>
   </div>
 </section>

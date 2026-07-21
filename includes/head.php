@@ -61,7 +61,8 @@ tailwind.config = {
 }
 </script>
 <style>
-  body { min-height: max(884px, 100dvh); -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+  html { overflow-x: clip; }
+  body { min-height: max(884px, 100dvh); -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; overflow-x: clip; }
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

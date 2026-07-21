@@ -82,7 +82,7 @@ require __DIR__ . '/includes/header.php';
       <label class="font-label-md text-primary block mb-1"><?= e(t('auth.confirm_password')) ?></label>
       <input name="confirm_password" type="password" required minlength="8" class="w-full bg-background border border-outline-variant/50 rounded-lg px-4 py-3 font-body-md">
     </div>
-    <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('auth.create_account_btn')) ?></button>
+    <button class="btn-lift w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('auth.create_account_btn')) ?></button>
     <p class="font-caption text-on-surface-variant text-center"><?= e(t('auth.already_have_account')) ?> <a class="text-secondary underline" href="<?= BASE_URL ?>/login.php"><?= e(t('auth.log_in')) ?></a></p>
   </form>
 </div>

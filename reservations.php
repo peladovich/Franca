@@ -150,7 +150,7 @@ require __DIR__ . '/includes/header.php';
         <label class="font-label-md text-primary block mb-1"><?= e(t('res.special_requests')) ?></label>
         <textarea name="requests" rows="3" class="w-full bg-background border border-outline-variant/50 rounded-lg px-4 py-3 font-body-md" placeholder="<?= e(t('res.special_requests_placeholder')) ?>"></textarea>
       </div>
-      <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest hover:opacity-90 transition-opacity" type="submit"><?= e(t('res.confirm')) ?></button>
+      <button class="btn-lift w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('res.confirm')) ?></button>
     </form>
   </div>
 </div>

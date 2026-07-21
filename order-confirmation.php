@@ -57,7 +57,7 @@ require __DIR__ . '/includes/header.php';
     </div>
   </div>
 
-  <a href="<?= BASE_URL ?>/menu.php" class="bg-primary text-on-primary px-md py-3 rounded-lg font-label-md inline-block"><?= $paymentStatus === 'paid' ? e(t('order.more')) : e(t('order.back_to_menu')) ?></a>
+  <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-primary text-on-primary px-md py-3 rounded-lg font-label-md inline-block"><?= $paymentStatus === 'paid' ? e(t('order.more')) : e(t('order.back_to_menu')) ?></a>
 </div>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>

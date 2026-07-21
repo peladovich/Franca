@@ -138,7 +138,7 @@ require __DIR__ . '/includes/header.php';
 <?php if (!$items): ?>
   <div class="bg-surface-container-lowest rounded-xl p-xl text-center">
     <p class="font-body-lg text-on-surface-variant mb-md"><?= e(t('cart.empty')) ?></p>
-    <a href="<?= BASE_URL ?>/menu.php" class="bg-primary text-on-primary px-md py-3 rounded-lg font-label-md inline-block"><?= e(t('cart.browse_menu')) ?></a>
+    <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-primary text-on-primary px-md py-3 rounded-lg font-label-md inline-block"><?= e(t('cart.browse_menu')) ?></a>
   </div>
 <?php else: ?>
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
@@ -203,7 +203,7 @@ require __DIR__ . '/includes/header.php';
           <button class="w-full bg-outline-variant text-on-surface-variant py-4 rounded-lg font-label-md uppercase tracking-widest cursor-not-allowed" type="button" disabled><?= e(t('cart.payment_unavailable_btn')) ?></button>
         <?php else: ?>
           <p class="font-caption text-on-surface-variant"><?= e(t('cart.redirect_notice')) ?></p>
-          <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest flex items-center justify-center gap-2" type="submit">
+          <button class="btn-lift w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest flex items-center justify-center gap-2" type="submit">
             <span class="material-symbols-outlined">lock</span> <?= e(t('cart.pay_with_mercadopago')) ?>
           </button>
         <?php endif; ?>

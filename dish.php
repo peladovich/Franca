@@ -57,7 +57,7 @@ require __DIR__ . '/includes/header.php';
       <?= csrf_field() ?>
       <input type="hidden" name="menu_item_id" value="<?= (int)$item['id'] ?>">
       <input type="hidden" name="action" value="add">
-      <button class="flex-1 bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest hover:opacity-90 transition-opacity" type="submit"><?= e(t('dish.add_to_order')) ?></button>
+      <button class="btn-lift flex-1 bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('dish.add_to_order')) ?></button>
     </form>
   </div>
 </div>
