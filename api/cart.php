@@ -146,7 +146,7 @@ require __DIR__ . '/includes/header.php';
       <?php foreach ($items as $it): ?>
       <div class="flex items-center gap-md bg-surface-container-lowest rounded-xl p-md">
         <div class="w-20 h-20 rounded-photo overflow-hidden flex-shrink-0">
-          <img class="w-full h-full object-cover" src="<?= img_url($it['row']['image']) ?>" alt="<?= e(mi_field($it['row'], 'name')) ?>">
+          <img class="w-full h-full object-cover" src="<?= item_photo_url($it['row']) ?>" alt="<?= e(mi_field($it['row'], 'name')) ?>">
         </div>
         <div class="flex-1">
           <h3 class="font-headline-sm text-headline-sm"><?= e(mi_field($it['row'], 'name')) ?></h3>

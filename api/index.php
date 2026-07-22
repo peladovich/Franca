@@ -41,7 +41,7 @@ require __DIR__ . '/includes/header.php';
     <?php foreach ($featured as $item): ?>
     <div class="flex-shrink-0 w-64 bg-surface-container-lowest rounded-photo shadow-sm overflow-hidden menu-item-card flex flex-col">
       <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>">
-        <div class="h-48 bg-cover bg-center" style="background-image: url('<?= img_url($item['image']) ?>')"></div>
+        <div class="h-48 bg-cover bg-center" style="background-image: url('<?= item_photo_url($item) ?>')"></div>
       </a>
       <div class="p-md flex flex-col flex-1">
         <div class="flex justify-between items-start gap-2 mb-1">

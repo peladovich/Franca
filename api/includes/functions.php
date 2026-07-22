@@ -70,3 +70,18 @@ function img_url(?string $filename): string
     }
     return BASE_URL . '/assets/img/' . $filename;
 }
+
+// Every menu item card shows a photo. Items without their own unique shot fall
+// back to one of two generic photos by category type, matching how items that
+// already share a photo (e.g. all iced drinks using cold-brew.jpg) work today.
+function item_photo_url(array $item): string
+{
+    if (!empty($item['image'])) {
+        return img_url($item['image']);
+    }
+    $drinkCategoryIds = [1, 4]; // Café, Bebidas
+    $generic = in_array((int) $item['category_id'], $drinkCategoryIds, true)
+        ? 'gallery-latte-art.jpg'
+        : 'real/focaccia-closeup.jpg';
+    return img_url($generic);
+}
