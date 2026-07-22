@@ -22,13 +22,13 @@ require __DIR__ . '/includes/header.php';
     <div class="absolute bottom-0 left-0 p-md md:p-2xl w-full">
       <span class="reveal font-eyebrow text-[12px] text-white/80 uppercase tracking-[0.2em] block mb-3"><?= e(t('menu.eyebrow')) ?></span>
       <h1 class="reveal font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-3 max-w-2xl"><?= e(t('home.hero_title')) ?></h1>
-      <p class="reveal font-body-lg text-white/90 mb-lg max-w-md"><?= e(t('home.hero_subtitle')) ?></p>
+      <p class="reveal font-body-lg text-white/90 mb-md md:mb-lg max-w-md"><?= e(t('home.hero_subtitle')) ?></p>
       <div class="reveal flex gap-sm">
         <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-accent text-on-accent px-md py-3 rounded-full font-label-md"><?= e(t('home.view_menu')) ?></a>
         <a href="<?= BASE_URL ?>/reservations.php" class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-md py-3 rounded-full font-label-md hover:bg-white/30 transition-all"><?= e(t('home.book_table')) ?></a>
       </div>
     </div>
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2" id="hero-dots">
+    <div class="absolute top-4 md:top-auto md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2" id="hero-dots">
       <?php foreach ($heroSlides as $i => $slide): ?>
         <button type="button" class="hero-progress <?= $i === 0 ? 'is-active' : '' ?>" data-hero-dot="<?= $i ?>" aria-label="<?= $i + 1 ?>"><span class="hero-progress-fill"></span></button>
       <?php endforeach; ?>
@@ -105,7 +105,7 @@ require __DIR__ . '/includes/header.php';
           <?= csrf_field() ?>
           <input type="hidden" name="menu_item_id" value="<?= (int)$item['id'] ?>">
           <input type="hidden" name="action" value="add">
-          <button class="btn-lift w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-primary flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity" type="submit" title="<?= e(t('home.add_to_bag')) ?>">
+          <button class="btn-lift w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-primary flex items-center justify-center shadow-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity" type="submit" title="<?= e(t('home.add_to_bag')) ?>">
             <span class="material-symbols-outlined text-[20px]">add</span>
           </button>
         </form>
