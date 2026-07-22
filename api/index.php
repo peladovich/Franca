@@ -13,8 +13,8 @@ require __DIR__ . '/includes/header.php';
 
 <!-- Hero: full-viewport photo carousel, Flora-style -->
 <?php $heroSlides = ['real/interior-morning.jpg', 'real/storefront.jpg', 'real/interior-wide.jpg', 'real/waffles-trio.jpg']; ?>
-<section class="mb-2xl full-bleed">
-  <div id="hero-carousel" class="relative overflow-hidden rounded-none md:rounded-photo min-h-[420px] h-[70vh] max-h-[620px]">
+<section class="full-bleed">
+  <div id="hero-carousel" class="relative overflow-hidden rounded-none md:rounded-photo min-h-[480px] h-[85vh] max-h-[760px]">
     <?php foreach ($heroSlides as $i => $slide): ?>
       <div class="hero-slide absolute inset-0 bg-cover bg-center <?= $i === 0 ? 'is-active' : '' ?>" data-hero-slide style="background-image: url('<?= img_url($slide) ?>')"></div>
     <?php endforeach; ?>
