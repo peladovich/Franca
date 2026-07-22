@@ -83,4 +83,4 @@ function lang_switcher_html(string $extraClass = ''): string
   <?php endforeach; unset($_SESSION['flash']); ?>
 </div>
 <?php endif; ?>
-<main class="<?= isset($subNav) ? 'pt-[126px]' : 'pt-24' ?> pb-32 md:pb-16 max-w-container-max 2xl:max-w-[1600px] mx-auto px-gutter">
+<main class="<?= isset($subNav) ? 'pt-[126px]' : 'pt-16' ?> pb-32 md:pb-16 max-w-container-max 2xl:max-w-[1600px] mx-auto px-gutter">
