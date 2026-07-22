@@ -142,13 +142,13 @@ tailwind.config = {
     .hero-progress.is-active .hero-progress-fill { animation: none; width: 100%; }
   }
 
-  /* Marquee ticker: a duplicated track scrolls left forever, so the loop is seamless. */
+  /* Marquee ticker: a duplicated track scrolls left forever, so the loop is
+     seamless. Always animates (hover/focus still pauses it) -- like the hero
+     carousel's slide timer, this always runs regardless of reduced-motion so
+     it doesn't silently sit frozen for anyone with that OS setting on. */
   .marquee-track { display: flex; width: max-content; animation: marquee-scroll 28s linear infinite; }
-  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-track:hover, .marquee-track:focus-within { animation-play-state: paused; }
   @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
-  }
 
   /* Our Vibe photos: a slow zoom-settle as each panel reveals, plus its own hover zoom. */
   .vibe-img-el { transform: scale(1.15); transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
