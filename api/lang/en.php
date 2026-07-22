@@ -314,4 +314,32 @@ return [
     'admin.item_updated' => 'Menu item updated.',
     'admin.item_created' => 'Menu item created.',
     'admin.item_not_found' => 'Menu item not found.',
+
+    // Homepage: About Us brief
+    'home.about_eyebrow' => 'About Franca',
+    'home.about_title' => "Uruguay's first non-profit café",
+    'home.about_text' => "Franca was born in 2023 with a simple idea: eating well shouldn't be a luxury. Every peso we make, after covering costs and salaries, is donated to organizations working on social impact, environmental care, and animal welfare.",
+    'home.about_cta' => 'Learn our story',
+
+    // About page
+    'about.eyebrow' => 'Our Story',
+    'about.title' => 'A café that exists to give more than it receives',
+    'about.intro' => "Franca is Uruguay's first non-profit restaurant and café. We run like any café — same bills, same wages, same standards — but what's left over goes somewhere different.",
+    'about.origin_label' => 'The Origin',
+    'about.origin_title' => 'From finance to the kitchen',
+    'about.origin_text' => "The idea came from Sol Preusse, who was finishing her finance degree while working in downtown Montevideo. Looking for somewhere to eat well at a fair price, she kept running into the same choice: expensive restaurants or fast food with nothing healthy. In April 2023 she opened Franca on a corner of Plaza Cagancha, with three floors and tables out on the plaza.",
+    'about.model_label' => 'Our Model',
+    'about.model_title' => 'Every profit, to those who need it',
+    'about.model_text' => "Franca runs like any business: we cover our costs and pay fair wages to a team of 15+. The difference is what happens to what's left. That profit doesn't go to an owner — it's donated in full to organizations working on social impact, environmental care, and animal welfare.",
+    'about.impact_label' => 'Our Impact',
+    'about.impact_title' => 'Causes we choose to support',
+    'about.impact_text' => 'We choose to support organizations like Socobioma, Fundación Ybyray, Animales Sin Hogar, and Proyecto Sembrando Nativos, among others. Every coffee you order, every dish you get, helps sustain that work.',
+    'about.impact_social' => 'Social Impact',
+    'about.impact_environment' => 'Environmental Care',
+    'about.impact_animal' => 'Animal Welfare',
+    'about.team_label' => 'Our Team',
+    'about.team_title' => 'The hands behind every dish',
+    'about.team_text' => 'Behind every table is a kitchen, bar, and floor team that chooses to do things carefully, every day. That commitment was recognized with the Sustainable SME of the Year award.',
+    'about.cta_title' => 'Come meet us',
+    'about.cta_text' => 'Stop by Plaza Cagancha 1124 and be part of it.',
 ];

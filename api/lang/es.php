@@ -314,4 +314,32 @@ return [
     'admin.item_updated' => 'Plato actualizado.',
     'admin.item_created' => 'Plato creado.',
     'admin.item_not_found' => 'Plato no encontrado.',
+
+    // Homepage: About Us brief
+    'home.about_eyebrow' => 'Sobre Franca',
+    'home.about_title' => 'El primer café sin fines de lucro de Uruguay',
+    'home.about_text' => 'Franca nació en 2023 con una idea simple: comer bien no debería ser un lujo. Cada peso que generamos, después de cubrir gastos y sueldos, se dona a organizaciones que trabajan por el impacto social, el cuidado del ambiente y la protección animal.',
+    'home.about_cta' => 'Conocé nuestra historia',
+
+    // About page
+    'about.eyebrow' => 'Nuestra Historia',
+    'about.title' => 'Un café que existe para dar más de lo que recibe',
+    'about.intro' => 'Franca es el primer restaurante y cafetería sin fines de lucro de Uruguay. Funcionamos como cualquier café — con las mismas cuentas, los mismos sueldos, la misma exigencia — pero con un destino distinto para lo que sobra.',
+    'about.origin_label' => 'El Origen',
+    'about.origin_title' => 'De las finanzas a los fogones',
+    'about.origin_text' => 'La idea nació de Sol Preusse, que terminaba su carrera en finanzas mientras trabajaba en el Centro de Montevideo. Buscando dónde comer bien a un precio justo, se topó con la misma disyuntiva de siempre: restaurantes caros o comida rápida sin nada saludable. En abril de 2023 abrió Franca en una esquina de Plaza Cagancha, con tres pisos y mesas en la vereda.',
+    'about.model_label' => 'Nuestro Modelo',
+    'about.model_title' => 'Todas las ganancias, a quien las necesita',
+    'about.model_text' => 'Franca funciona como cualquier negocio: cubrimos nuestros costos y pagamos sueldos justos a un equipo de más de 15 personas. La diferencia está en lo que queda después. Esa ganancia no va a un dueño — se dona íntegramente a organizaciones que trabajan por el impacto social, el cuidado del ambiente y la protección animal.',
+    'about.impact_label' => 'Nuestro Impacto',
+    'about.impact_title' => 'Causas que elegimos apoyar',
+    'about.impact_text' => 'Elegimos apoyar organizaciones como Socobioma, Fundación Ybyray, Animales Sin Hogar y Proyecto Sembrando Nativos, entre otras. Cada café que servís, cada plato que pedís, ayuda a sostener ese trabajo.',
+    'about.impact_social' => 'Impacto Social',
+    'about.impact_environment' => 'Cuidado Ambiental',
+    'about.impact_animal' => 'Protección Animal',
+    'about.team_label' => 'Nuestro Equipo',
+    'about.team_title' => 'Las manos detrás de cada plato',
+    'about.team_text' => 'Detrás de cada mesa hay un equipo de cocina, barra y sala que elige todos los días hacer las cosas con cuidado. Ese compromiso fue reconocido con el premio a la Mipyme Sustentable del Año.',
+    'about.cta_title' => 'Vení a conocernos',
+    'about.cta_text' => 'Pasá por Plaza Cagancha 1124 y sé parte de esto.',
 ];

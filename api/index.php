@@ -119,6 +119,21 @@ require __DIR__ . '/includes/header.php';
   </div>
 </section>
 
+<!-- About Us: the non-profit mission, with a scroll-parallax image -->
+<section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl">
+  <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
+    <div class="parallax-frame overflow-hidden aspect-[4/3] order-2 md:order-1">
+      <img class="parallax-img" src="<?= img_url('real/flatlay-outside-2.jpg') ?>" alt="Franca terrace at Plaza Cagancha">
+    </div>
+    <div class="space-y-3 order-1 md:order-2">
+      <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('home.about_eyebrow')) ?></span>
+      <h2 class="font-headline-md text-headline-md text-primary"><?= e(t('home.about_title')) ?></h2>
+      <p class="font-body-md text-on-surface-variant"><?= e(t('home.about_text')) ?></p>
+      <a href="<?= BASE_URL ?>/about.php" class="btn-lift inline-block bg-accent text-on-accent px-md py-3 rounded-full font-label-md mt-2"><?= e(t('home.about_cta')) ?></a>
+    </div>
+  </div>
+</section>
+
 <!-- Our Vibe -->
 <section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl">
   <span class="reveal font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('home.our_vibe')) ?></span>

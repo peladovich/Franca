@@ -11,6 +11,7 @@
         <span class="font-label-md text-label-md text-primary font-bold"><?= e(t('footer.visit_us')) ?></span>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="<?= BASE_URL ?>/reservations.php"><?= e(t('footer.location_hours')) ?></a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="<?= BASE_URL ?>/menu.php"><?= e(t('nav.menu')) ?></a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="<?= BASE_URL ?>/about.php"><?= e(t('about.eyebrow')) ?></a>
       </nav>
       <nav class="flex flex-col gap-2">
         <span class="font-label-md text-label-md text-primary font-bold"><?= e(t('footer.account')) ?></span>
@@ -80,6 +81,30 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(apply, 150);
   });
+})();
+
+// Scroll parallax for .parallax-img: drifts within its frame based on how far
+// the frame has scrolled through the viewport. Always runs, same reasoning
+// as the hero carousel timer -- a gentle 60px drift isn't the kind of motion
+// prefers-reduced-motion is meant to suppress, and users on this site were
+// getting a silently-frozen effect when that OS setting was on.
+(function () {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.parallax-img'));
+  if (!imgs.length) return;
+  var ticking = false;
+  function update() {
+    imgs.forEach(function (img) {
+      var rect = img.parentElement.getBoundingClientRect();
+      var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      var offset = (Math.min(1, Math.max(0, progress)) - 0.5) * 60;
+      img.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
 })();
 </script>
 </body>

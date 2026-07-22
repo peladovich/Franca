@@ -164,6 +164,12 @@ tailwind.config = {
   @media (prefers-reduced-motion: reduce) {
     .vibe-img-el, .reveal-group.is-visible .vibe-img-el { transform: none; transition: none; }
   }
+
+  /* Scroll parallax: the image sits taller than its frame and drifts as the
+     page scrolls past it (see footer.php for the scroll-driven JS). Runs
+     unconditionally (see footer.php), so stays sized for movement always. */
+  .parallax-frame { position: relative; overflow: hidden; }
+  .parallax-img { position: absolute; left: 0; top: -12%; width: 100%; height: 124%; object-fit: cover; will-change: transform; }
 </style>
 <?= $extraHead ?? '' ?>
 </head>

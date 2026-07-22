@@ -21,6 +21,7 @@ if ($route === '') {
 
 $routes = [
     'index.php' => 'index.php',
+    'about.php' => 'about.php',
     'menu.php' => 'menu.php',
     'dish.php' => 'dish.php',
     'cart.php' => 'cart.php',

@@ -38,7 +38,7 @@ require __DIR__ . '/includes/header.php';
   if (!$items) continue;
 ?>
 <section id="cat-<?= (int)$cat['id'] ?>" class="scroll-mt-32 mb-2xl">
-  <div class="border-b border-outline-variant/30 pb-3 mb-lg">
+  <div class="reveal border-b border-outline-variant/30 pb-3 mb-lg">
     <h2 class="font-headline-md text-headline-md text-primary"><?= e(mi_field($cat, 'name')) ?></h2>
   </div>
   <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-md gap-y-lg">
