@@ -28,24 +28,6 @@ require __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Service mode chips -->
-<section class="mb-xl">
-  <div class="flex justify-between items-center bg-surface-container-low p-2 rounded-xl max-w-lg">
-    <button class="flex-1 flex flex-col items-center py-3 rounded-lg bg-secondary text-on-secondary shadow-md" type="button">
-      <span class="material-symbols-outlined mb-1">restaurant</span>
-      <span class="font-label-md text-sm"><?= e(t('home.dine_in')) ?></span>
-    </button>
-    <button class="flex-1 flex flex-col items-center py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high" type="button">
-      <span class="material-symbols-outlined mb-1">shopping_basket</span>
-      <span class="font-label-md text-sm"><?= e(t('home.takeaway')) ?></span>
-    </button>
-    <button class="flex-1 flex flex-col items-center py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high" type="button">
-      <span class="material-symbols-outlined mb-1">delivery_dining</span>
-      <span class="font-label-md text-sm"><?= e(t('home.delivery')) ?></span>
-    </button>
-  </div>
-</section>
-
 <!-- Popular Today -->
 <section class="mb-xl">
   <div class="flex justify-between items-end mb-md">

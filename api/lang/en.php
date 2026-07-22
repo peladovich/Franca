@@ -25,7 +25,6 @@ return [
     'home.book_table' => 'Book a Table',
     'home.dine_in' => 'Dine-in',
     'home.takeaway' => 'Takeaway',
-    'home.delivery' => 'Delivery',
     'home.popular_today' => 'Popular Today',
     'home.popular_subtitle' => "The favorites we can't get enough of.",
     'home.see_all' => 'See All',

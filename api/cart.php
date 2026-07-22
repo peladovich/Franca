@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'check
     $guestName = trim($_POST['guest_name'] ?? '');
     $guestPhone = trim($_POST['guest_phone'] ?? '');
     $guestEmail = trim($_POST['guest_email'] ?? '');
-    $serviceMode = in_array($_POST['service_mode'] ?? '', ['dine-in', 'takeaway', 'delivery'], true)
+    $serviceMode = in_array($_POST['service_mode'] ?? '', ['dine-in', 'takeaway'], true)
         ? $_POST['service_mode'] : 'dine-in';
 
     if (!$user && $guestName === '') {
@@ -177,7 +177,6 @@ require __DIR__ . '/includes/header.php';
           <select name="service_mode" class="w-full bg-background border border-outline-variant/50 rounded-lg px-4 py-3 font-body-md">
             <option value="dine-in"><?= e(t('home.dine_in')) ?></option>
             <option value="takeaway"><?= e(t('home.takeaway')) ?></option>
-            <option value="delivery"><?= e(t('home.delivery')) ?></option>
           </select>
         </div>
         <?php if (!current_user()): ?>

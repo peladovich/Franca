@@ -25,7 +25,6 @@ return [
     'home.book_table' => 'Reservar una Mesa',
     'home.dine_in' => 'En el local',
     'home.takeaway' => 'Para llevar',
-    'home.delivery' => 'Delivery',
     'home.popular_today' => 'Populares Hoy',
     'home.popular_subtitle' => 'Los favoritos de los que no nos podemos separar.',
     'home.see_all' => 'Ver todo',

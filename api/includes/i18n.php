@@ -67,7 +67,7 @@ function mi_field(array $row, string $field): string
     return $row[$field] ?? '';
 }
 
-/** service_mode enum ('dine-in'|'takeaway'|'delivery') -> translated label. */
+/** service_mode enum ('dine-in'|'takeaway') -> translated label. */
 function service_mode_label(string $mode): string
 {
     return t('home.' . str_replace('-', '_', $mode));

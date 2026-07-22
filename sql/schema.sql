@@ -94,7 +94,7 @@ CREATE TABLE orders (
   user_id INT UNSIGNED NULL,
   guest_name VARCHAR(120) NULL,
   guest_phone VARCHAR(40) NULL,
-  service_mode ENUM('dine-in','takeaway','delivery') NOT NULL DEFAULT 'dine-in',
+  service_mode ENUM('dine-in','takeaway') NOT NULL DEFAULT 'dine-in',
   status ENUM('pending','preparing','ready','completed','cancelled') NOT NULL DEFAULT 'pending',
   payment_status ENUM('pending','paid','failed','cancelled') NOT NULL DEFAULT 'pending',
   payment_provider VARCHAR(30) NULL,
