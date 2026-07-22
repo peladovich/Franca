@@ -12,6 +12,7 @@ function env(string $key, string $default): string
 }
 
 define('DB_HOST', env('DB_HOST', 'localhost'));
+define('DB_PORT', env('DB_PORT', '3306')); // Many cloud MySQL hosts (e.g. Railway) use a non-default port.
 define('DB_NAME', env('DB_NAME', 'franca'));
 define('DB_USER', env('DB_USER', 'root'));
 define('DB_PASS', env('DB_PASS', ''));
