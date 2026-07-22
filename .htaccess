@@ -1,0 +1,12 @@
+# Local (Apache/XAMPP) compatibility shim.
+#
+# The app's PHP source lives under /api (required by the Vercel deployment
+# -- see vercel.json), but keeps its original clean URLs like /menu.php
+# for both environments. This transparently serves requests from /api/...
+# without changing the URL, so http://localhost/franca/menu.php keeps
+# working exactly as before.
+RewriteEngine On
+RewriteBase /franca/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ api/$1 [L]

@@ -5,6 +5,18 @@ CREATE DATABASE IF NOT EXISTS franca CHARACTER SET utf8mb4 COLLATE utf8mb4_unico
 USE franca;
 
 -- ---------------------------------------------------------------
+-- Sessions (database-backed session storage). Required on serverless
+-- hosts like Vercel where the local filesystem isn't guaranteed to
+-- persist between function invocations -- see includes/session_handler.php.
+-- ---------------------------------------------------------------
+CREATE TABLE sessions (
+  id VARCHAR(128) NOT NULL PRIMARY KEY,
+  data MEDIUMTEXT NOT NULL,
+  last_activity INT UNSIGNED NOT NULL,
+  KEY idx_last_activity (last_activity)
+) ENGINE=InnoDB;
+
+-- ---------------------------------------------------------------
 -- Users (customers + admins share one table, distinguished by role)
 -- ---------------------------------------------------------------
 CREATE TABLE users (
