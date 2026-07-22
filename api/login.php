@@ -56,7 +56,7 @@ require __DIR__ . '/includes/header.php';
       <label class="font-label-md text-primary block mb-1"><?= e(t('auth.password')) ?></label>
       <input name="password" type="password" required class="w-full bg-background border border-outline-variant/50 rounded-lg px-4 py-3 font-body-md">
     </div>
-    <button class="btn-lift w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('auth.log_in')) ?></button>
+    <button class="btn-lift w-full bg-accent text-on-accent py-4 rounded-full font-label-md uppercase tracking-widest" type="submit"><?= e(t('auth.log_in')) ?></button>
     <p class="font-caption text-on-surface-variant text-center"><?= e(t('auth.new_to_franca')) ?> <a class="text-secondary underline" href="<?= BASE_URL ?>/register.php"><?= e(t('auth.create_account_link')) ?></a></p>
   </form>
 </div>

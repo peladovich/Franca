@@ -40,7 +40,9 @@ function lang_switcher_html(string $extraClass = ''): string
         <button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <span class="material-symbols-outlined">menu</span>
         </button>
-        <a href="<?= BASE_URL ?>/index.php" class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary">FRANCA</a>
+        <a href="<?= BASE_URL ?>/index.php" class="flex items-center gap-1.5 font-wordmark font-extrabold text-[22px] leading-none tracking-tight text-primary">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>FRANCA
+        </a>
       </div>
       <nav class="hidden md:flex items-center gap-8">
         <?= nav_link(BASE_URL . '/index.php', t('nav.home'), 'home', $active) ?>

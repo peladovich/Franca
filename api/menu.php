@@ -41,22 +41,24 @@ require __DIR__ . '/includes/header.php';
   <div class="border-b border-outline-variant/30 pb-2 mb-lg">
     <h2 class="font-headline-md text-headline-md text-primary"><?= e(mi_field($cat, 'name')) ?></h2>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
-    <?php foreach ($items as $item): ?>
-    <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>" class="menu-item-card bg-surface-container-lowest rounded-xl overflow-hidden flex gap-md p-md items-center group">
-      <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="<?= img_url($item['image']) ?>" alt="<?= e(mi_field($item, 'name')) ?>">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-md gap-y-lg">
+    <?php foreach ($items as $item): $hasPhoto = !empty($item['image']); ?>
+    <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>" class="group block">
+      <?php if ($hasPhoto): ?>
+      <div class="aspect-square overflow-hidden bg-surface-container-low mb-3">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?= img_url($item['image']) ?>" alt="<?= e(mi_field($item, 'name')) ?>">
       </div>
-      <div class="flex-1 min-w-0">
-        <div class="flex justify-between items-start gap-2">
-          <h3 class="font-headline-sm text-headline-sm text-primary"><?= e(mi_field($item, 'name')) ?></h3>
-          <span class="font-body-lg text-body-lg text-secondary whitespace-nowrap"><?= money($item['price']) ?></span>
-        </div>
-        <?php if ($item['badge']): ?>
-          <span class="inline-block mt-1 px-2 py-0.5 bg-secondary text-on-secondary text-[10px] font-label-md rounded-full uppercase tracking-wider"><?= e(mi_field($item, 'badge')) ?></span>
-        <?php endif; ?>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-1 line-clamp-2"><?= e(mi_field($item, 'description')) ?></p>
+      <?php else: ?>
+      <div class="border-t border-outline-variant/30 mb-3"></div>
+      <?php endif; ?>
+      <div class="flex justify-between items-start gap-2">
+        <h3 class="font-label-md text-label-md text-primary uppercase tracking-wide"><?= e(mi_field($item, 'name')) ?></h3>
+        <span class="font-body-md text-body-md text-accent-dark whitespace-nowrap"><?= money($item['price']) ?></span>
       </div>
+      <?php if ($item['badge']): ?>
+        <span class="inline-block mt-1 px-2 py-0.5 bg-secondary text-on-secondary text-[10px] font-label-md rounded-full uppercase tracking-wider"><?= e(mi_field($item, 'badge')) ?></span>
+      <?php endif; ?>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-1 line-clamp-2"><?= e(mi_field($item, 'description')) ?></p>
     </a>
     <?php endforeach; ?>
   </div>

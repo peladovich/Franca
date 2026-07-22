@@ -13,16 +13,16 @@ require __DIR__ . '/includes/header.php';
 
 <!-- Hero -->
 <section class="mb-xl">
-  <div class="relative overflow-hidden rounded-xl h-[420px] md:h-[500px] group">
+  <div class="relative overflow-hidden rounded-photo h-[420px] md:h-[500px] group">
     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-         style="background-image: url('<?= img_url('desktop-home-hero.jpg') ?>')"></div>
+         style="background-image: url('<?= img_url('real/storefront.jpg') ?>')"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
     <div class="absolute bottom-0 left-0 p-md md:p-xl w-full">
       <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-2"><?= e(t('home.hero_title')) ?></h1>
       <p class="font-body-lg text-white/90 mb-md max-w-md"><?= e(t('home.hero_subtitle')) ?></p>
       <div class="flex gap-sm">
-        <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-primary text-on-primary px-md py-3 rounded-lg font-label-md"><?= e(t('home.view_menu')) ?></a>
-        <a href="<?= BASE_URL ?>/reservations.php" class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-md py-3 rounded-lg font-label-md hover:bg-white/30 transition-all"><?= e(t('home.book_table')) ?></a>
+        <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-accent text-on-accent px-md py-3 rounded-full font-label-md"><?= e(t('home.view_menu')) ?></a>
+        <a href="<?= BASE_URL ?>/reservations.php" class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-md py-3 rounded-full font-label-md hover:bg-white/30 transition-all"><?= e(t('home.book_table')) ?></a>
       </div>
     </div>
   </div>
@@ -39,14 +39,14 @@ require __DIR__ . '/includes/header.php';
   </div>
   <div class="flex overflow-x-auto hide-scrollbar gap-md pb-4">
     <?php foreach ($featured as $item): ?>
-    <div class="flex-shrink-0 w-64 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden menu-item-card flex flex-col">
+    <div class="flex-shrink-0 w-64 bg-surface-container-lowest rounded-photo shadow-sm overflow-hidden menu-item-card flex flex-col">
       <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>">
         <div class="h-48 bg-cover bg-center" style="background-image: url('<?= img_url($item['image']) ?>')"></div>
       </a>
       <div class="p-md flex flex-col flex-1">
         <div class="flex justify-between items-start gap-2 mb-1">
           <h3 class="font-headline-sm text-headline-sm line-clamp-2"><?= e(mi_field($item, 'name')) ?></h3>
-          <span class="font-label-md text-secondary whitespace-nowrap"><?= money($item['price']) ?></span>
+          <span class="font-label-md text-accent-dark whitespace-nowrap"><?= money($item['price']) ?></span>
         </div>
         <p class="font-caption text-on-surface-variant line-clamp-2 mb-md flex-1"><?= e(mi_field($item, 'description')) ?></p>
         <form method="post" action="<?= BASE_URL ?>/cart.php">
@@ -66,21 +66,21 @@ require __DIR__ . '/includes/header.php';
   <h2 class="font-headline-md text-headline-md text-primary mb-lg"><?= e(t('home.our_vibe')) ?></h2>
   <div class="space-y-lg">
     <div class="grid md:grid-cols-2 gap-md items-center">
-      <div class="rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
-        <img class="w-full h-full object-cover" src="<?= img_url('vibe-morning-ritual.jpg') ?>" alt="Morning ritual at Franca">
+      <div class="rounded-photo overflow-hidden aspect-[4/3] shadow-lg">
+        <img class="w-full h-full object-cover" src="<?= img_url('real/interior-morning.jpg') ?>" alt="Morning ritual at Franca">
       </div>
       <div class="space-y-2">
-        <span class="font-label-md text-secondary uppercase tracking-widest"><?= e(t('home.atmosphere_label')) ?></span>
+        <span class="font-label-md text-accent-dark uppercase tracking-widest"><?= e(t('home.atmosphere_label')) ?></span>
         <h3 class="font-headline-sm text-headline-sm"><?= e(t('home.morning_ritual_title')) ?></h3>
         <p class="font-body-md text-on-surface-variant"><?= e(t('home.morning_ritual_text')) ?></p>
       </div>
     </div>
     <div class="grid md:grid-cols-2 gap-md items-center">
-      <div class="md:order-2 rounded-xl overflow-hidden aspect-[4/3] shadow-lg">
-        <img class="w-full h-full object-cover" src="<?= img_url('vibe-mindful-craft.jpg') ?>" alt="Mindful craft at Franca">
+      <div class="md:order-2 rounded-photo overflow-hidden aspect-[4/3] shadow-lg">
+        <img class="w-full h-full object-cover" src="<?= img_url('real/team-kitchen.jpg') ?>" alt="Mindful craft at Franca">
       </div>
       <div class="md:order-1 space-y-2">
-        <span class="font-label-md text-secondary uppercase tracking-widest"><?= e(t('home.process_label')) ?></span>
+        <span class="font-label-md text-accent-dark uppercase tracking-widest"><?= e(t('home.process_label')) ?></span>
         <h3 class="font-headline-sm text-headline-sm"><?= e(t('home.mindful_craft_title')) ?></h3>
         <p class="font-body-md text-on-surface-variant"><?= e(t('home.mindful_craft_text')) ?></p>
       </div>

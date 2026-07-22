@@ -28,12 +28,12 @@ require __DIR__ . '/includes/header.php';
 
 <div class="flex flex-col md:flex-row md:gap-lg">
   <div class="w-full md:w-1/2 lg:w-7/12 relative">
-    <div class="aspect-[4/5] md:aspect-square overflow-hidden rounded-xl editorial-shadow bg-surface-container-highest">
+    <div class="aspect-[4/5] md:aspect-square overflow-hidden rounded-photo editorial-shadow bg-surface-container-highest">
       <img class="w-full h-full object-cover" src="<?= img_url($item['image']) ?>" alt="<?= e(mi_field($item, 'name')) ?>">
     </div>
     <div class="absolute bottom-6 right-6 bg-surface-container-lowest py-3 px-6 rounded-lg shadow-lg flex flex-col items-end">
       <span class="font-label-md text-label-md text-on-surface-variant opacity-70"><?= e(t('dish.price_label')) ?></span>
-      <span class="font-headline-md text-headline-md text-primary"><?= money($item['price']) ?></span>
+      <span class="font-headline-md text-headline-md text-accent-dark"><?= money($item['price']) ?></span>
     </div>
   </div>
 
@@ -57,7 +57,7 @@ require __DIR__ . '/includes/header.php';
       <?= csrf_field() ?>
       <input type="hidden" name="menu_item_id" value="<?= (int)$item['id'] ?>">
       <input type="hidden" name="action" value="add">
-      <button class="btn-lift flex-1 bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest" type="submit"><?= e(t('dish.add_to_order')) ?></button>
+      <button class="btn-lift flex-1 bg-accent text-on-accent py-4 rounded-full font-label-md uppercase tracking-widest" type="submit"><?= e(t('dish.add_to_order')) ?></button>
     </form>
   </div>
 </div>

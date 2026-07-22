@@ -138,14 +138,14 @@ require __DIR__ . '/includes/header.php';
 <?php if (!$items): ?>
   <div class="bg-surface-container-lowest rounded-xl p-xl text-center">
     <p class="font-body-lg text-on-surface-variant mb-md"><?= e(t('cart.empty')) ?></p>
-    <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-primary text-on-primary px-md py-3 rounded-lg font-label-md inline-block"><?= e(t('cart.browse_menu')) ?></a>
+    <a href="<?= BASE_URL ?>/menu.php" class="btn-lift bg-accent text-on-accent px-md py-3 rounded-full font-label-md inline-block"><?= e(t('cart.browse_menu')) ?></a>
   </div>
 <?php else: ?>
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
     <div class="lg:col-span-7 space-y-md">
       <?php foreach ($items as $it): ?>
       <div class="flex items-center gap-md bg-surface-container-lowest rounded-xl p-md">
-        <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+        <div class="w-20 h-20 rounded-photo overflow-hidden flex-shrink-0">
           <img class="w-full h-full object-cover" src="<?= img_url($it['row']['image']) ?>" alt="<?= e(mi_field($it['row'], 'name')) ?>">
         </div>
         <div class="flex-1">
@@ -153,7 +153,7 @@ require __DIR__ . '/includes/header.php';
           <p class="font-caption text-on-surface-variant"><?= e(t('cart.qty')) ?> <?= (int)$it['qty'] ?> × <?= money($it['row']['price']) ?></p>
         </div>
         <div class="text-right">
-          <p class="font-label-md text-secondary mb-2"><?= money($it['subtotal']) ?></p>
+          <p class="font-label-md text-accent-dark mb-2"><?= money($it['subtotal']) ?></p>
           <form method="post">
             <?= csrf_field() ?>
             <input type="hidden" name="action" value="remove">
@@ -202,7 +202,7 @@ require __DIR__ . '/includes/header.php';
           <button class="w-full bg-outline-variant text-on-surface-variant py-4 rounded-lg font-label-md uppercase tracking-widest cursor-not-allowed" type="button" disabled><?= e(t('cart.payment_unavailable_btn')) ?></button>
         <?php else: ?>
           <p class="font-caption text-on-surface-variant"><?= e(t('cart.redirect_notice')) ?></p>
-          <button class="btn-lift w-full bg-primary text-on-primary py-4 rounded-lg font-label-md uppercase tracking-widest flex items-center justify-center gap-2" type="submit">
+          <button class="btn-lift w-full bg-accent text-on-accent py-4 rounded-full font-label-md uppercase tracking-widest flex items-center justify-center gap-2" type="submit">
             <span class="material-symbols-outlined">lock</span> <?= e(t('cart.pay_with_mercadopago')) ?>
           </button>
         <?php endif; ?>

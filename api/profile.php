@@ -48,7 +48,7 @@ require __DIR__ . '/includes/header.php';
             <p class="font-caption text-on-surface-variant"><?= e(date('M j, Y g:i A', strtotime($o['created_at']))) ?></p>
           </div>
           <div class="text-right">
-            <p class="font-label-md text-secondary"><?= money($o['total']) ?></p>
+            <p class="font-label-md text-accent-dark"><?= money($o['total']) ?></p>
             <?php if ($o['payment_status'] !== 'paid'): ?>
               <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-label-md uppercase bg-error-container text-on-error-container"><?= $o['payment_status'] === 'pending' ? e(t('profile.unpaid')) : e(status_label($o['payment_status'])) ?></span>
             <?php else: ?>

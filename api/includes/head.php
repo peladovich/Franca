@@ -14,7 +14,7 @@ $htmlLang = function_exists('current_locale') ? current_locale() : 'es';
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
 tailwind.config = {
@@ -37,14 +37,15 @@ tailwind.config = {
         "surface-dim": "#dcd9d9", "on-error-container": "#93000a", "tertiary-fixed": "#e6e2dd",
         "surface-container-high": "#eae7e7", "surface-container-lowest": "#ffffff",
         "on-surface-variant": "#504441", "on-tertiary": "#ffffff", "surface-bright": "#fcf9f8",
-        "on-secondary-fixed": "#082014", "on-secondary-fixed-variant": "#344c3e", "inverse-on-surface": "#f3f0f0"
+        "on-secondary-fixed": "#082014", "on-secondary-fixed-variant": "#344c3e", "inverse-on-surface": "#f3f0f0",
+        "accent": "#FE8550", "accent-dark": "#D9622C", "on-accent": "#2c160e"
       },
-      borderRadius: { DEFAULT: "0.25rem", lg: "0.75rem", xl: "1.25rem", full: "9999px" },
-      spacing: { md: "24px", gutter: "24px", xs: "4px", sm: "12px", xl: "80px", base: "8px", "container-max": "1200px", lg: "48px" },
+      borderRadius: { DEFAULT: "0.25rem", lg: "0.75rem", xl: "1.25rem", photo: "6px", full: "9999px" },
+      spacing: { md: "24px", gutter: "24px", xs: "4px", sm: "12px", xl: "80px", "2xl": "112px", base: "8px", "container-max": "1200px", lg: "48px" },
       fontFamily: {
         "headline-sm": ['"Source Serif 4"'], "caption": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"],
         "display-lg": ['"Source Serif 4"'], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ['"Source Serif 4"'],
-        "headline-md": ['"Source Serif 4"'], "body-lg": ["Plus Jakarta Sans"]
+        "headline-md": ['"Source Serif 4"'], "body-lg": ["Plus Jakarta Sans"], "wordmark": ["Plus Jakarta Sans"]
       },
       fontSize: {
         "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "500" }],
