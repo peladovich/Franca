@@ -9,22 +9,51 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<header class="reveal mb-2xl text-center md:text-left max-w-3xl">
-  <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('about.eyebrow')) ?></span>
-  <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md"><?= e(t('about.title')) ?></h1>
-  <p class="font-body-lg text-on-surface-variant"><?= e(t('about.intro')) ?></p>
-</header>
+<!-- Hero -->
+<section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-xl">
+  <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
+    <div class="order-2 md:order-1">
+      <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('about.eyebrow')) ?></span>
+      <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md"><?= e(t('about.title')) ?></h1>
+      <p class="font-body-lg text-on-surface-variant"><?= e(t('about.intro')) ?></p>
+    </div>
+    <div class="parallax-frame overflow-hidden aspect-[4/5] md:aspect-[4/3] order-1 md:order-2 rounded-photo editorial-shadow">
+      <img class="parallax-img" src="<?= img_url('real/flatlay-outside-1.jpg') ?>" alt="Franca table at Plaza Cagancha">
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="reveal-group max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl grid grid-cols-2 md:grid-cols-4 gap-md">
+  <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">2023</p>
+    <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_founded_label')) ?></p>
+  </div>
+  <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">15+</p>
+    <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_team_label')) ?></p>
+  </div>
+  <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">100%</p>
+    <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_profit_label')) ?></p>
+  </div>
+  <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">3</p>
+    <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_causes_label')) ?></p>
+  </div>
+</section>
 
 <!-- Origin -->
 <section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl">
   <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
-    <div class="parallax-frame overflow-hidden aspect-[4/3]">
+    <div class="parallax-frame overflow-hidden aspect-[4/3] rounded-photo">
       <img class="parallax-img" src="<?= img_url('real/storefront.jpg') ?>" alt="Franca storefront on Plaza Cagancha">
     </div>
-    <div class="space-y-2">
+    <div class="space-y-3">
       <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('about.origin_label')) ?></span>
       <h2 class="font-headline-sm text-headline-sm text-primary"><?= e(t('about.origin_title')) ?></h2>
       <p class="font-body-md text-on-surface-variant"><?= e(t('about.origin_text')) ?></p>
+      <blockquote class="border-l-2 border-accent pl-4 py-1 font-headline-sm text-headline-sm text-primary italic"><?= e(t('about.origin_quote')) ?></blockquote>
     </div>
   </div>
 </section>
@@ -44,17 +73,20 @@ require __DIR__ . '/includes/header.php';
   <h2 class="reveal font-headline-md text-headline-md text-primary mb-md max-w-2xl"><?= e(t('about.impact_title')) ?></h2>
   <p class="reveal font-body-md text-on-surface-variant mb-lg max-w-2xl"><?= e(t('about.impact_text')) ?></p>
   <div class="reveal-group grid grid-cols-1 sm:grid-cols-3 gap-md">
-    <div class="bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3 editorial-shadow">
-      <span class="material-symbols-outlined text-accent text-[28px]">volunteer_activism</span>
+    <div class="menu-item-card bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3">
+      <span class="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center"><span class="material-symbols-outlined text-accent text-[26px]">volunteer_activism</span></span>
       <span class="font-label-md text-label-md text-primary uppercase tracking-wide"><?= e(t('about.impact_social')) ?></span>
+      <p class="font-body-md text-body-md text-on-surface-variant"><?= e(t('about.impact_social_desc')) ?></p>
     </div>
-    <div class="bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3 editorial-shadow">
-      <span class="material-symbols-outlined text-accent text-[28px]">eco</span>
+    <div class="menu-item-card bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3">
+      <span class="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center"><span class="material-symbols-outlined text-accent text-[26px]">eco</span></span>
       <span class="font-label-md text-label-md text-primary uppercase tracking-wide"><?= e(t('about.impact_environment')) ?></span>
+      <p class="font-body-md text-body-md text-on-surface-variant"><?= e(t('about.impact_environment_desc')) ?></p>
     </div>
-    <div class="bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3 editorial-shadow">
-      <span class="material-symbols-outlined text-accent text-[28px]">pets</span>
+    <div class="menu-item-card bg-surface-container-lowest rounded-photo p-lg flex flex-col items-start gap-3">
+      <span class="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center"><span class="material-symbols-outlined text-accent text-[26px]">pets</span></span>
       <span class="font-label-md text-label-md text-primary uppercase tracking-wide"><?= e(t('about.impact_animal')) ?></span>
+      <p class="font-body-md text-body-md text-on-surface-variant"><?= e(t('about.impact_animal_desc')) ?></p>
     </div>
   </div>
 </section>
@@ -62,12 +94,13 @@ require __DIR__ . '/includes/header.php';
 <!-- Team -->
 <section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl">
   <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
-    <div class="space-y-2 md:order-1">
+    <div class="space-y-3 md:order-1">
       <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('about.team_label')) ?></span>
       <h2 class="font-headline-sm text-headline-sm text-primary"><?= e(t('about.team_title')) ?></h2>
       <p class="font-body-md text-on-surface-variant"><?= e(t('about.team_text')) ?></p>
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary-container/50 text-on-secondary-container rounded-full font-label-md text-sm"><span class="material-symbols-outlined text-sm">workspace_premium</span><?= e(t('about.award_badge')) ?></span>
     </div>
-    <div class="overflow-hidden aspect-[4/3] md:order-2">
+    <div class="overflow-hidden aspect-[4/3] md:order-2 rounded-photo">
       <img class="vibe-img-el w-full h-full object-cover" src="<?= img_url('real/team-full.jpg') ?>" alt="The Franca team">
     </div>
   </div>

@@ -9,6 +9,7 @@ return [
     'nav.profile' => 'Mi cuenta',
     'nav.logout' => 'Cerrar sesión',
     'nav.book' => 'Reservar',
+    'nav.about' => 'Nosotros',
 
     // Footer
     'footer.tagline' => 'Café artesanal y cocina de estación en Montevideo. Hecho con intención.',
@@ -342,4 +343,14 @@ return [
     'about.team_text' => 'Detrás de cada mesa hay un equipo de cocina, barra y sala que elige todos los días hacer las cosas con cuidado. Ese compromiso fue reconocido con el premio a la Mipyme Sustentable del Año.',
     'about.cta_title' => 'Vení a conocernos',
     'about.cta_text' => 'Pasá por Plaza Cagancha 1124 y sé parte de esto.',
+    'about.stat_founded_label' => 'Fundado',
+    'about.stat_team_label' => 'Equipo',
+    'about.stat_profit_label' => 'Ganancias Donadas',
+    'about.stat_causes_label' => 'Causas Apoyadas',
+    'about.origin_quote' => '"Dos extremos: restaurantes caros, o comida rápida sin nada saludable."',
+    'about.impact_social_desc' => 'Educación, vivienda y desarrollo comunitario.',
+    'about.impact_environment_desc' => 'Conservación y restauración ambiental.',
+    'about.impact_animal_desc' => 'Rescate, refugio y bienestar animal.',
+    'about.award_badge' => 'Mipyme Sustentable del Año',
+    'home.about_stat' => '100% de las ganancias, donadas.',
 ];

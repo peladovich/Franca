@@ -35,6 +35,7 @@ function nav_link(string $href, string $label, string $key, string $active): str
         <?= nav_link(BASE_URL . '/index.php', t('nav.home'), 'home', $active) ?>
         <?= nav_link(BASE_URL . '/menu.php', t('nav.menu'), 'menu', $active) ?>
         <?= nav_link(BASE_URL . '/reservations.php', t('nav.reservations'), 'reservations', $active) ?>
+        <?= nav_link(BASE_URL . '/about.php', t('nav.about'), 'about', $active) ?>
         <?= $user ? nav_link(BASE_URL . '/profile.php', t('nav.profile'), 'profile', $active) : nav_link(BASE_URL . '/login.php', t('nav.login'), 'login', $active) ?>
       </nav>
       <div class="flex items-center gap-4">
@@ -51,6 +52,7 @@ function nav_link(string $href, string $label, string $key, string $active): str
       <?= nav_link(BASE_URL . '/index.php', t('nav.home'), 'home', $active) ?>
       <?= nav_link(BASE_URL . '/menu.php', t('nav.menu'), 'menu', $active) ?>
       <?= nav_link(BASE_URL . '/reservations.php', t('nav.reservations'), 'reservations', $active) ?>
+      <?= nav_link(BASE_URL . '/about.php', t('nav.about'), 'about', $active) ?>
       <?php if ($user): ?>
         <?= nav_link(BASE_URL . '/profile.php', t('nav.profile'), 'profile', $active) ?>
         <a class="font-label-md text-label-md text-on-surface-variant" href="<?= BASE_URL ?>/logout.php"><?= e(t('nav.logout')) ?></a>

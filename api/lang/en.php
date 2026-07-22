@@ -9,6 +9,7 @@ return [
     'nav.profile' => 'Profile',
     'nav.logout' => 'Log out',
     'nav.book' => 'Book',
+    'nav.about' => 'About',
 
     // Footer
     'footer.tagline' => 'Artisanal coffee and seasonal kitchen in Montevideo. Crafted with intention.',
@@ -342,4 +343,14 @@ return [
     'about.team_text' => 'Behind every table is a kitchen, bar, and floor team that chooses to do things carefully, every day. That commitment was recognized with the Sustainable SME of the Year award.',
     'about.cta_title' => 'Come meet us',
     'about.cta_text' => 'Stop by Plaza Cagancha 1124 and be part of it.',
+    'about.stat_founded_label' => 'Founded',
+    'about.stat_team_label' => 'Team',
+    'about.stat_profit_label' => 'Profits Donated',
+    'about.stat_causes_label' => 'Causes Supported',
+    'about.origin_quote' => '"Two extremes: expensive restaurants, or fast food with nothing healthy."',
+    'about.impact_social_desc' => 'Education, housing, and community development.',
+    'about.impact_environment_desc' => 'Conservation and environmental restoration.',
+    'about.impact_animal_desc' => 'Rescue, shelter, and animal welfare.',
+    'about.award_badge' => 'Sustainable SME of the Year',
+    'home.about_stat' => '100% of profits, donated.',
 ];
