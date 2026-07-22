@@ -6,6 +6,21 @@ require_once __DIR__ . '/includes/i18n.php';
 $categories = db()->query("SELECT * FROM categories ORDER BY sort_order")->fetchAll();
 $itemsStmt = db()->prepare("SELECT * FROM menu_items WHERE category_id = ? AND is_available = 1 ORDER BY sort_order");
 
+// Rendered as a true sibling of <main> (via header.php's $subNav hook) so it can
+// bleed to the real viewport edges the same way the site header does, with no
+// vw/calc breakout hacks that risk phantom horizontal scroll.
+ob_start(); ?>
+<nav id="category-nav" class="sticky top-16 mt-16 z-30 w-full bg-surface shadow-[0_4px_20px_rgba(93,64,55,0.08)] border-b border-outline-variant/20">
+  <div class="max-w-container-max mx-auto overflow-x-auto hide-scrollbar">
+    <div class="flex gap-2 items-center w-max px-gutter py-3">
+      <?php foreach ($categories as $i => $cat): ?>
+        <a href="#cat-<?= (int)$cat['id'] ?>" data-cat-pill data-target="cat-<?= (int)$cat['id'] ?>" class="cat-pill <?= $i === 0 ? 'is-active bg-primary text-on-primary border-primary' : 'bg-surface-container-low text-on-surface-variant border-outline-variant/40' ?> font-label-md text-label-md whitespace-nowrap px-4 py-2 rounded-full border"><?= e(mi_field($cat, 'name')) ?></a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</nav>
+<?php $subNav = ob_get_clean();
+
 $pageTitle = 'Franca | ' . t('nav.menu');
 $active = 'menu';
 require __DIR__ . '/includes/head.php';
@@ -16,17 +31,6 @@ require __DIR__ . '/includes/header.php';
   <span class="font-label-md text-secondary uppercase tracking-widest block mb-2"><?= e(t('menu.eyebrow')) ?></span>
   <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary max-w-2xl"><?= e(t('menu.title')) ?></h1>
 </header>
-
-<!-- Category pills -->
-<nav id="category-nav" class="sticky top-24 z-30 bg-surface shadow-[0_4px_20px_rgba(93,64,55,0.08)] border-b border-outline-variant/20 mx-[calc(50%-50vw)] mb-lg">
-  <div class="max-w-container-max mx-auto overflow-x-auto hide-scrollbar">
-    <div class="flex gap-2 items-center w-max px-gutter py-3">
-      <?php foreach ($categories as $i => $cat): ?>
-        <a href="#cat-<?= (int)$cat['id'] ?>" data-cat-pill data-target="cat-<?= (int)$cat['id'] ?>" class="cat-pill <?= $i === 0 ? 'is-active bg-primary text-on-primary border-primary' : 'bg-surface-container-low text-on-surface-variant border-outline-variant/40' ?> font-label-md text-label-md whitespace-nowrap px-4 py-2 rounded-full border"><?= e(mi_field($cat, 'name')) ?></a>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</nav>
 
 <?php foreach ($categories as $cat):
   $itemsStmt->execute([$cat['id']]);
