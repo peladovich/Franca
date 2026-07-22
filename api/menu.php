@@ -69,4 +69,57 @@ require __DIR__ . '/includes/header.php';
 </div>
 <?php endif; ?>
 
+<script>
+(function () {
+  var ACTIVE_CLASSES = ['is-active', 'bg-primary', 'text-on-primary', 'border-primary'];
+  var INACTIVE_CLASSES = ['bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant/40'];
+
+  var pills = Array.prototype.slice.call(document.querySelectorAll('[data-cat-pill]'));
+  var pillsByTarget = {};
+  pills.forEach(function (p) { pillsByTarget[p.dataset.target] = p; });
+
+  var pillScroller = document.querySelector('#category-nav .overflow-x-auto');
+
+  function setActivePill(targetId) {
+    pills.forEach(function (p) {
+      var isMatch = p.dataset.target === targetId;
+      ACTIVE_CLASSES.forEach(function (c) { p.classList.toggle(c, isMatch); });
+      INACTIVE_CLASSES.forEach(function (c) { p.classList.toggle(c, !isMatch); });
+    });
+    var activePill = pillsByTarget[targetId];
+    if (activePill && pillScroller) {
+      var pillLeft = activePill.offsetLeft;
+      var pillRight = pillLeft + activePill.offsetWidth;
+      var viewLeft = pillScroller.scrollLeft;
+      var viewRight = viewLeft + pillScroller.clientWidth;
+      if (pillLeft < viewLeft || pillRight > viewRight) {
+        activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+  }
+
+  // Click gives immediate feedback instead of waiting for the scroll to
+  // settle and the observer below to catch up.
+  pills.forEach(function (p) {
+    p.addEventListener('click', function () { setActivePill(p.dataset.target); });
+  });
+
+  // Scroll-spy: a section is "active" once it crosses a thin detection
+  // band just below the fixed header + category bar, so the highlighted
+  // pill always matches whatever section is actually on screen.
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id^="cat-"]'));
+  if (sections.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      var visible = entries.filter(function (e) { return e.isIntersecting; });
+      if (!visible.length) return;
+      // If multiple sections intersect the band at once, prefer the one
+      // closest to the top of the viewport.
+      visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+      setActivePill(visible[0].target.id);
+    }, { rootMargin: '-135px 0px -60% 0px', threshold: 0 });
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+})();
+</script>
+
 <?php require __DIR__ . '/includes/footer.php'; ?>
