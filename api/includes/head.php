@@ -124,6 +124,20 @@ tailwind.config = {
   @media (prefers-reduced-motion: reduce) {
     [class*="animate-\[hero-settle"] { animation: none !important; transform: none !important; }
   }
+
+  /* Hero photo carousel: stacked slides cross-fade via opacity. */
+  .hero-slide { opacity: 0; transition: opacity 1.2s ease; }
+  .hero-slide.is-active { opacity: 1; }
+  .hero-dot { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,0.45); transition: background-color 0.3s ease, transform 0.3s ease; }
+  .hero-dot.is-active { background: #ffffff; transform: scale(1.25); }
+
+  /* Marquee ticker: a duplicated track scrolls left forever, so the loop is seamless. */
+  .marquee-track { display: flex; width: max-content; animation: marquee-scroll 28s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
 </style>
 <?= $extraHead ?? '' ?>
 </head>

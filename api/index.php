@@ -11,12 +11,14 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Hero: full-viewport, Flora-style -->
+<!-- Hero: full-viewport photo carousel, Flora-style -->
+<?php $heroSlides = ['real/interior-morning.jpg', 'real/storefront.jpg', 'real/interior-wide.jpg', 'real/waffles-trio.jpg']; ?>
 <section class="mb-2xl -mx-gutter md:mx-0">
-  <div class="relative overflow-hidden rounded-none md:rounded-photo min-h-[560px] h-[calc(100dvh-96px)] max-h-[860px]">
-    <div class="absolute inset-0 bg-cover bg-center scale-105 animate-[hero-settle_1.6s_cubic-bezier(0.16,1,0.3,1)_forwards]"
-         style="background-image: url('<?= img_url('real/interior-morning.jpg') ?>')"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent"></div>
+  <div id="hero-carousel" class="relative overflow-hidden rounded-none md:rounded-photo min-h-[560px] h-[calc(100dvh-96px)] max-h-[860px]">
+    <?php foreach ($heroSlides as $i => $slide): ?>
+      <div class="hero-slide absolute inset-0 bg-cover bg-center <?= $i === 0 ? 'is-active' : '' ?>" data-hero-slide style="background-image: url('<?= img_url($slide) ?>')"></div>
+    <?php endforeach; ?>
+    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 p-md md:p-2xl w-full">
       <span class="reveal font-eyebrow text-[12px] text-white/80 uppercase tracking-[0.2em] block mb-3"><?= e(t('menu.eyebrow')) ?></span>
       <h1 class="reveal font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-3 max-w-2xl"><?= e(t('home.hero_title')) ?></h1>
@@ -26,9 +28,62 @@ require __DIR__ . '/includes/header.php';
         <a href="<?= BASE_URL ?>/reservations.php" class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-md py-3 rounded-full font-label-md hover:bg-white/30 transition-all"><?= e(t('home.book_table')) ?></a>
       </div>
     </div>
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2" id="hero-dots">
+      <?php foreach ($heroSlides as $i => $slide): ?>
+        <button type="button" class="hero-dot <?= $i === 0 ? 'is-active' : '' ?>" data-hero-dot="<?= $i ?>" aria-label="<?= $i + 1 ?>"></button>
+      <?php endforeach; ?>
+    </div>
     <div class="scroll-cue absolute bottom-6 right-6 hidden md:flex text-white/70">
       <span class="material-symbols-outlined">arrow_downward</span>
     </div>
+  </div>
+</section>
+<script>
+(function () {
+  var root = document.getElementById('hero-carousel');
+  if (!root) return;
+  var slides = Array.prototype.slice.call(root.querySelectorAll('[data-hero-slide]'));
+  var dots = Array.prototype.slice.call(root.querySelectorAll('[data-hero-dot]'));
+  if (slides.length < 2) return;
+
+  var current = 0;
+  var timer = null;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function goTo(index) {
+    slides[current].classList.remove('is-active');
+    if (dots[current]) dots[current].classList.remove('is-active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    if (dots[current]) dots[current].classList.add('is-active');
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    if (reduceMotion) return;
+    timer = setInterval(function () { goTo(current + 1); }, 5000);
+  }
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () { goTo(i); startTimer(); });
+  });
+  root.addEventListener('mouseenter', function () { clearInterval(timer); });
+  root.addEventListener('mouseleave', startTimer);
+
+  startTimer();
+})();
+</script>
+
+<!-- Marquee ticker, Culto-style -->
+<?php $marqueeItems = [t('home.hero_title'), t('menu.eyebrow'), 'Montevideo, Uruguay']; ?>
+<section class="reveal mb-2xl -mx-gutter md:mx-0 overflow-hidden bg-primary py-3">
+  <div class="marquee-track">
+    <?php for ($rep = 0; $rep < 2; $rep++): ?>
+      <?php foreach ($marqueeItems as $mi): ?>
+        <span class="font-eyebrow text-[13px] text-white/90 uppercase tracking-[0.15em] px-6 whitespace-nowrap"><?= e($mi) ?></span>
+        <span class="text-accent px-1" aria-hidden="true">•</span>
+      <?php endforeach; ?>
+    <?php endfor; ?>
   </div>
 </section>
 
@@ -70,7 +125,7 @@ require __DIR__ . '/includes/header.php';
   <div class="space-y-2xl">
     <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
       <div class="overflow-hidden aspect-[4/3]">
-        <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="<?= img_url('real/storefront.jpg') ?>" alt="Morning ritual at Franca">
+        <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="<?= img_url('real/team-full.jpg') ?>" alt="Morning ritual at Franca">
       </div>
       <div class="space-y-2">
         <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('home.atmosphere_label')) ?></span>
@@ -88,6 +143,14 @@ require __DIR__ . '/includes/header.php';
         <p class="font-body-md text-on-surface-variant"><?= e(t('home.mindful_craft_text')) ?></p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Manifesto band, Culto-style -->
+<section class="reveal mb-2xl -mx-gutter md:mx-0 bg-primary px-gutter md:px-2xl py-2xl">
+  <div class="max-w-container-max mx-auto">
+    <span class="font-eyebrow text-[11px] text-white/60 uppercase tracking-[0.2em] block mb-4">FRANCA</span>
+    <p class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white max-w-3xl"><?= e(t('footer.tagline')) ?></p>
   </div>
 </section>
 
