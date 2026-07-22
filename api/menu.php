@@ -27,8 +27,8 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<header class="mb-lg text-center md:text-left">
-  <span class="font-label-md text-secondary uppercase tracking-widest block mb-2"><?= e(t('menu.eyebrow')) ?></span>
+<header class="reveal mb-2xl text-center md:text-left">
+  <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('menu.eyebrow')) ?></span>
   <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary max-w-2xl"><?= e(t('menu.title')) ?></h1>
 </header>
 
@@ -37,8 +37,8 @@ require __DIR__ . '/includes/header.php';
   $items = $itemsStmt->fetchAll();
   if (!$items) continue;
 ?>
-<section id="cat-<?= (int)$cat['id'] ?>" class="scroll-mt-32 mb-xl">
-  <div class="border-b border-outline-variant/30 pb-2 mb-lg">
+<section id="cat-<?= (int)$cat['id'] ?>" class="scroll-mt-32 mb-2xl">
+  <div class="border-b border-outline-variant/30 pb-3 mb-lg">
     <h2 class="font-headline-md text-headline-md text-primary"><?= e(mi_field($cat, 'name')) ?></h2>
   </div>
   <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-md gap-y-lg">

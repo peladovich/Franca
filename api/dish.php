@@ -26,19 +26,19 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<div class="flex flex-col md:flex-row md:gap-lg">
+<div class="reveal-group flex flex-col md:flex-row md:gap-lg">
   <div class="w-full md:w-1/2 lg:w-7/12 relative">
     <div class="aspect-[4/5] md:aspect-square overflow-hidden rounded-photo editorial-shadow bg-surface-container-highest">
       <img class="w-full h-full object-cover" src="<?= item_photo_url($item) ?>" alt="<?= e(mi_field($item, 'name')) ?>">
     </div>
     <div class="absolute bottom-6 right-6 bg-surface-container-lowest py-3 px-6 rounded-lg shadow-lg flex flex-col items-end">
-      <span class="font-label-md text-label-md text-on-surface-variant opacity-70"><?= e(t('dish.price_label')) ?></span>
+      <span class="font-eyebrow text-[10px] text-on-surface-variant opacity-70 uppercase tracking-[0.15em]"><?= e(t('dish.price_label')) ?></span>
       <span class="font-headline-md text-headline-md text-accent-dark"><?= money($item['price']) ?></span>
     </div>
   </div>
 
   <div class="w-full md:w-1/2 lg:w-5/12 mt-md md:mt-0 flex flex-col justify-center">
-    <span class="font-label-md text-secondary tracking-widest uppercase"><?= e(mi_field($item, 'category_name')) ?></span>
+    <span class="font-eyebrow text-[11px] text-accent-dark tracking-[0.2em] uppercase"><?= e(mi_field($item, 'category_name')) ?></span>
     <h1 class="font-display-lg text-display-lg text-primary mt-2 mb-md"><?= e(mi_field($item, 'name')) ?></h1>
     <p class="font-body-lg text-on-surface-variant mb-lg leading-relaxed"><?= e(mi_field($item, 'description')) ?></p>
 

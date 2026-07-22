@@ -15,7 +15,7 @@ $htmlLang = function_exists('current_locale') ? current_locale() : 'es';
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
 tailwind.config = {
@@ -46,7 +46,8 @@ tailwind.config = {
       fontFamily: {
         "headline-sm": ['"Source Serif 4"'], "caption": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"],
         "display-lg": ['"Source Serif 4"'], "label-md": ["Plus Jakarta Sans"], "display-lg-mobile": ['"Source Serif 4"'],
-        "headline-md": ['"Source Serif 4"'], "body-lg": ["Plus Jakarta Sans"], "wordmark": ["Plus Jakarta Sans"]
+        "headline-md": ['"Source Serif 4"'], "body-lg": ["Plus Jakarta Sans"], "wordmark": ["Plus Jakarta Sans"],
+        "eyebrow": ['"JetBrains Mono"']
       },
       fontSize: {
         "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "500" }],
@@ -91,6 +92,38 @@ tailwind.config = {
   .btn-lift:active:not(:disabled) { transform: translateY(0); }
 
   :focus-visible { outline: 2px solid #4c6455; outline-offset: 2px; border-radius: 4px; }
+
+  /* Scroll-reveal: elements fade + rise into place as they enter the viewport.
+     .reveal-group staggers its direct children via transition-delay. */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-group.is-visible > * { opacity: 1; transform: translateY(0); }
+  .reveal-group > * { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-group.is-visible > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-group.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+  .reveal-group.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+  .reveal-group.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+  .reveal-group.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-group.is-visible > *:nth-child(6) { transition-delay: 0.4s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-group > * { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Underline-draw link, used for inline editorial links (Culto/Flora-style). */
+  .link-underline { position: relative; }
+  .link-underline::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px;
+    background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .scroll-cue { animation: scroll-cue-bounce 1.8s ease-in-out infinite; }
+  @keyframes scroll-cue-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
+
+  @keyframes hero-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    [class*="animate-\[hero-settle"] { animation: none !important; transform: none !important; }
+  }
 </style>
 <?= $extraHead ?? '' ?>
 </head>

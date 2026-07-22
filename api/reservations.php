@@ -48,12 +48,13 @@ require __DIR__ . '/includes/head.php';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<header class="mb-lg text-center md:text-left">
+<header class="reveal mb-2xl text-center md:text-left">
+  <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('res.location_name')) ?></span>
   <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-2"><?= e(t('res.title')) ?></h1>
   <p class="font-body-lg text-on-surface-variant max-w-2xl"><?= e(t('res.subtitle')) ?></p>
 </header>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg mb-xl">
+<div class="reveal-group grid grid-cols-1 lg:grid-cols-2 gap-lg mb-2xl">
   <!-- Location -->
   <div class="flex flex-col gap-lg">
     <div class="bg-surface-container-lowest rounded-xl p-md editorial-shadow">

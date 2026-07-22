@@ -40,5 +40,24 @@
     <span class="font-label-md text-[10px]"><?= e(t('nav.profile')) ?></span>
   </a>
 </nav>
+<script>
+(function () {
+  var targets = document.querySelectorAll('.reveal, .reveal-group');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function (el) { observer.observe(el); });
+})();
+</script>
 </body>
 </html>
