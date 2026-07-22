@@ -41,7 +41,7 @@ function lang_switcher_html(string $extraClass = ''): string
           <span class="material-symbols-outlined">menu</span>
         </button>
         <a href="<?= BASE_URL ?>/index.php" class="flex items-center gap-1.5 font-wordmark font-extrabold text-[22px] leading-none tracking-tight text-primary">
-          <span class="w-2 h-2 rounded-full bg-accent"></span>FRANCA
+          <img src="<?= BASE_URL ?>/assets/img/brand/logo-mark.png" alt="" class="w-5 h-5 object-contain">FRANCA
         </a>
       </div>
       <nav class="hidden md:flex items-center gap-8">
