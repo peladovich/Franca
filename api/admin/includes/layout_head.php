@@ -2,6 +2,7 @@
 /** Expects $pageTitle and $active to be set. Requires admin. */
 require_once __DIR__ . '/../../includes/auth.php';
 require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../includes/i18n.php';
 require_admin();
 
 $active = $active ?? '';
@@ -11,7 +12,7 @@ function admin_link(string $href, string $icon, string $label, string $key, stri
 {
     $isActive = $active === $key;
     $cls = $isActive
-        ? 'flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-label-md'
+        ? 'flex items-center gap-3 px-4 py-3 rounded-lg bg-accent/15 text-accent-dark font-label-md'
         : 'flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-label-md transition-colors';
     return '<a href="' . e($href) . '" class="' . $cls . '"><span class="material-symbols-outlined text-[20px]">' . $icon . '</span>' . e($label) . '</a>';
 }
@@ -22,38 +23,48 @@ require __DIR__ . '/../../includes/head.php';
   <!-- Sidebar -->
   <aside class="hidden md:flex md:w-64 flex-shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex-col fixed top-0 left-0 h-screen z-40">
     <div class="px-6 py-6 border-b border-outline-variant/30">
-      <span class="font-display-lg-mobile text-display-lg-mobile text-primary">FRANCA</span>
-      <p class="font-caption text-on-surface-variant uppercase tracking-widest">Admin Panel</p>
+      <a href="<?= BASE_URL ?>/admin/index.php" class="flex items-center gap-1.5 font-wordmark font-extrabold text-[20px] leading-none tracking-tight text-primary">
+        <img src="<?= BASE_URL ?>/assets/img/brand/logo-mark.png" alt="" class="w-5 h-5 object-contain">FRANCA
+      </a>
+      <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-2"><?= e(t('admin.panel_label')) ?></p>
     </div>
     <nav class="flex-1 px-3 py-4 space-y-1">
-      <?= admin_link(BASE_URL . '/admin/index.php', 'dashboard', 'Dashboard', 'dashboard', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/menu-items.php', 'restaurant_menu', 'Menu Items', 'menu-items', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/categories.php', 'category', 'Categories', 'categories', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/orders.php', 'shopping_bag', 'Orders', 'orders', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/reservations.php', 'event_available', 'Reservations', 'reservations', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/users.php', 'group', 'Users', 'users', $active) ?>
-      <?= admin_link(BASE_URL . '/admin/settings.php', 'settings', 'Settings', 'settings', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/index.php', 'dashboard', t('admin.nav_dashboard'), 'dashboard', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/menu-items.php', 'restaurant_menu', t('admin.nav_menu_items'), 'menu-items', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/categories.php', 'category', t('admin.nav_categories'), 'categories', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/orders.php', 'shopping_bag', t('admin.nav_orders'), 'orders', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/reservations.php', 'event_available', t('admin.nav_reservations'), 'reservations', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/users.php', 'group', t('admin.nav_users'), 'users', $active) ?>
+      <?= admin_link(BASE_URL . '/admin/settings.php', 'settings', t('admin.nav_settings'), 'settings', $active) ?>
     </nav>
     <div class="px-3 py-4 border-t border-outline-variant/30">
-      <p class="font-caption text-on-surface-variant px-4 mb-2"><?= e($admin['name']) ?></p>
-      <a href="<?= BASE_URL ?>/admin/logout.php" class="flex items-center gap-3 px-4 py-3 rounded-lg text-error hover:bg-error-container/30 font-label-md"><span class="material-symbols-outlined text-[20px]">logout</span>Log out</a>
+      <div class="flex items-center justify-between px-4 mb-3">
+        <p class="font-caption text-on-surface-variant"><?= e($admin['name']) ?></p>
+        <?= lang_switcher_html() ?>
+      </div>
+      <a href="<?= BASE_URL ?>/admin/logout.php" class="flex items-center gap-3 px-4 py-3 rounded-lg text-error hover:bg-error-container/30 font-label-md"><span class="material-symbols-outlined text-[20px]">logout</span><?= e(t('admin.log_out')) ?></a>
     </div>
   </aside>
 
   <!-- Mobile top bar -->
   <header class="md:hidden fixed top-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-gutter h-16">
-    <span class="font-display-lg-mobile text-display-lg-mobile text-primary">FRANCA Admin</span>
-    <button onclick="document.getElementById('admin-mobile-nav').classList.toggle('hidden')" class="text-primary"><span class="material-symbols-outlined">menu</span></button>
+    <a href="<?= BASE_URL ?>/admin/index.php" class="flex items-center gap-1.5 font-wordmark font-extrabold text-[18px] leading-none tracking-tight text-primary">
+      <img src="<?= BASE_URL ?>/assets/img/brand/logo-mark.png" alt="" class="w-5 h-5 object-contain">FRANCA
+    </a>
+    <div class="flex items-center gap-3">
+      <?= lang_switcher_html() ?>
+      <button onclick="document.getElementById('admin-mobile-nav').classList.toggle('hidden')" class="text-primary flex items-center"><span class="material-symbols-outlined">menu</span></button>
+    </div>
   </header>
   <nav id="admin-mobile-nav" class="hidden md:hidden fixed top-16 left-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant/30 px-gutter py-md flex flex-col gap-1">
-    <?= admin_link(BASE_URL . '/admin/index.php', 'dashboard', 'Dashboard', 'dashboard', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/menu-items.php', 'restaurant_menu', 'Menu Items', 'menu-items', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/categories.php', 'category', 'Categories', 'categories', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/orders.php', 'shopping_bag', 'Orders', 'orders', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/reservations.php', 'event_available', 'Reservations', 'reservations', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/users.php', 'group', 'Users', 'users', $active) ?>
-    <?= admin_link(BASE_URL . '/admin/settings.php', 'settings', 'Settings', 'settings', $active) ?>
-    <a href="<?= BASE_URL ?>/admin/logout.php" class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-label-md"><span class="material-symbols-outlined text-[20px]">logout</span>Log out</a>
+    <?= admin_link(BASE_URL . '/admin/index.php', 'dashboard', t('admin.nav_dashboard'), 'dashboard', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/menu-items.php', 'restaurant_menu', t('admin.nav_menu_items'), 'menu-items', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/categories.php', 'category', t('admin.nav_categories'), 'categories', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/orders.php', 'shopping_bag', t('admin.nav_orders'), 'orders', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/reservations.php', 'event_available', t('admin.nav_reservations'), 'reservations', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/users.php', 'group', t('admin.nav_users'), 'users', $active) ?>
+    <?= admin_link(BASE_URL . '/admin/settings.php', 'settings', t('admin.nav_settings'), 'settings', $active) ?>
+    <a href="<?= BASE_URL ?>/admin/logout.php" class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-label-md"><span class="material-symbols-outlined text-[20px]">logout</span><?= e(t('admin.log_out')) ?></a>
   </nav>
 
   <!-- Main content -->

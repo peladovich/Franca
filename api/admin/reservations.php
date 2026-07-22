@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && csrf_verify() && ($_POST['action'] 
     $status = $_POST['status'] ?? '';
     if (in_array($status, $validStatuses, true)) {
         $db->prepare("UPDATE reservations SET status = ? WHERE id = ?")->execute([$status, $id]);
-        flash('success', 'Reservation updated.');
+        flash('success', t('admin.reservation_updated'));
     }
     header('Location: ' . BASE_URL . '/admin/reservations.php');
     exit;
@@ -28,18 +28,18 @@ $statusColors = [
 require __DIR__ . '/includes/layout_head.php';
 ?>
 
-<h1 class="font-headline-md text-headline-md text-primary mb-lg">Reservations</h1>
+<h1 class="font-headline-md text-headline-md text-primary mb-lg"><?= e(t('admin.reservations_title')) ?></h1>
 
 <div class="bg-surface-container-lowest rounded-xl overflow-x-auto editorial-shadow">
   <table class="w-full text-left min-w-[720px]">
     <thead class="bg-surface-container-high">
       <tr>
-        <th class="p-3 font-label-md text-sm">Guest</th>
-        <th class="p-3 font-label-md text-sm">Date / Time</th>
-        <th class="p-3 font-label-md text-sm">Party</th>
-        <th class="p-3 font-label-md text-sm">Requests</th>
-        <th class="p-3 font-label-md text-sm">Status</th>
-        <th class="p-3 font-label-md text-sm text-right">Actions</th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_guest')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_datetime')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_party')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_requests')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_status')) ?></th>
+        <th class="p-3 font-label-md text-sm text-right"><?= e(t('admin.col_actions')) ?></th>
       </tr>
     </thead>
     <tbody>
@@ -49,7 +49,7 @@ require __DIR__ . '/includes/layout_head.php';
         <td class="p-3 font-body-md"><?= e(date('M j, Y', strtotime($r['reservation_date']))) ?><br><span class="font-caption text-on-surface-variant"><?= e(date('g:i A', strtotime($r['reservation_time']))) ?></span></td>
         <td class="p-3 font-body-md"><?= (int)$r['party_size'] ?></td>
         <td class="p-3 font-body-md text-sm max-w-xs"><?= e($r['special_requests']) ?></td>
-        <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[11px] font-label-md uppercase <?= $statusColors[$r['status']] ?? '' ?>"><?= e($r['status']) ?></span></td>
+        <td class="p-3"><span class="px-2 py-0.5 rounded-full text-[11px] font-label-md uppercase <?= $statusColors[$r['status']] ?? '' ?>"><?= e(status_label($r['status'])) ?></span></td>
         <td class="p-3 text-right">
           <form method="post" class="flex gap-2 justify-end">
             <?= csrf_field() ?>
@@ -57,15 +57,15 @@ require __DIR__ . '/includes/layout_head.php';
             <input type="hidden" name="id" value="<?= (int)$r['id'] ?>">
             <select name="status" class="bg-background border border-outline-variant/50 rounded-lg px-2 py-1 font-body-md text-sm">
               <?php foreach ($validStatuses as $s): ?>
-                <option value="<?= $s ?>" <?= $r['status'] === $s ? 'selected' : '' ?>><?= ucfirst($s) ?></option>
+                <option value="<?= $s ?>" <?= $r['status'] === $s ? 'selected' : '' ?>><?= e(status_label($s)) ?></option>
               <?php endforeach; ?>
             </select>
-            <button class="bg-primary text-on-primary px-3 py-1 rounded-lg font-label-md text-sm" type="submit">Save</button>
+            <button class="bg-accent text-on-accent px-3 py-1 rounded-full font-label-md text-sm" type="submit"><?= e(t('admin.save')) ?></button>
           </form>
         </td>
       </tr>
       <?php endforeach; ?>
-      <?php if (!$reservations): ?><tr><td colspan="6" class="p-3 font-body-md text-on-surface-variant">No reservations yet.</td></tr><?php endif; ?>
+      <?php if (!$reservations): ?><tr><td colspan="6" class="p-3 font-body-md text-on-surface-variant"><?= e(t('admin.no_reservations_yet')) ?></td></tr><?php endif; ?>
     </tbody>
   </table>
 </div>

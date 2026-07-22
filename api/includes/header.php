@@ -11,19 +11,6 @@ function nav_link(string $href, string $label, string $key, string $active): str
     return '<a class="' . $cls . '" href="' . e($href) . '">' . e($label) . '</a>';
 }
 
-function lang_switcher_html(string $extraClass = ''): string
-{
-    $locale = current_locale();
-    $es = e(lang_switch_url('es'));
-    $en = e(lang_switch_url('en'));
-    $esCls = $locale === 'es' ? 'text-primary' : 'text-on-surface-variant hover:text-primary';
-    $enCls = $locale === 'en' ? 'text-primary' : 'text-on-surface-variant hover:text-primary';
-    return '<div class="flex items-center gap-1 font-label-md text-label-md ' . $extraClass . '">'
-        . '<a href="' . $es . '" class="' . $esCls . ' px-1">ES</a>'
-        . '<span class="text-outline-variant">|</span>'
-        . '<a href="' . $en . '" class="' . $enCls . ' px-1">EN</a>'
-        . '</div>';
-}
 ?>
 <!--
   Header and any page-supplied $subNav share ONE fixed "chrome" surface:

@@ -51,6 +51,21 @@ function lang_switch_url(string $locale): string
     return $path . '?' . http_build_query($params);
 }
 
+/** Renders the ES|EN toggle. Shared by the public site and the admin panel. */
+function lang_switcher_html(string $extraClass = ''): string
+{
+    $locale = current_locale();
+    $es = e(lang_switch_url('es'));
+    $en = e(lang_switch_url('en'));
+    $esCls = $locale === 'es' ? 'text-primary' : 'text-on-surface-variant hover:text-primary';
+    $enCls = $locale === 'en' ? 'text-primary' : 'text-on-surface-variant hover:text-primary';
+    return '<div class="flex items-center gap-1 font-label-md text-label-md ' . $extraClass . '">'
+        . '<a href="' . $es . '" class="' . $esCls . ' px-1">ES</a>'
+        . '<span class="text-outline-variant">|</span>'
+        . '<a href="' . $en . '" class="' . $enCls . ' px-1">EN</a>'
+        . '</div>';
+}
+
 /**
  * Reads a DB-sourced field with locale awareness: falls back to the base
  * (Spanish) column whenever the current locale isn't English or the

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && csrf_verify()) {
             $slug = strtolower(preg_replace('/[^a-z0-9]+/i', '-', $name));
             $stmt = $db->prepare("INSERT INTO categories (name, slug, sort_order) VALUES (?, ?, ?)");
             $stmt->execute([$name, trim($slug, '-'), $sort]);
-            flash('success', 'Category added.');
+            flash('success', t('admin.category_added'));
         }
     } elseif ($action === 'update') {
         $id = (int) ($_POST['id'] ?? 0);
@@ -23,17 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && csrf_verify()) {
         if ($id && $name !== '') {
             $stmt = $db->prepare("UPDATE categories SET name = ?, sort_order = ? WHERE id = ?");
             $stmt->execute([$name, $sort, $id]);
-            flash('success', 'Category updated.');
+            flash('success', t('admin.category_updated'));
         }
     } elseif ($action === 'delete') {
         $id = (int) ($_POST['id'] ?? 0);
         $stmt = $db->prepare("SELECT COUNT(*) FROM menu_items WHERE category_id = ?");
         $stmt->execute([$id]);
         if ($stmt->fetchColumn() > 0) {
-            flash('error', 'Cannot delete a category that still has menu items.');
+            flash('error', t('admin.category_delete_blocked'));
         } else {
             $db->prepare("DELETE FROM categories WHERE id = ?")->execute([$id]);
-            flash('success', 'Category deleted.');
+            flash('success', t('admin.category_deleted'));
         }
     }
     header('Location: ' . BASE_URL . '/admin/categories.php');
@@ -46,17 +46,17 @@ require __DIR__ . '/includes/layout_head.php';
 ?>
 
 <div class="flex justify-between items-center mb-lg">
-  <h1 class="font-headline-md text-headline-md text-primary">Categories</h1>
+  <h1 class="font-headline-md text-headline-md text-primary"><?= e(t('admin.categories_title')) ?></h1>
 </div>
 
 <div class="bg-surface-container-lowest rounded-xl p-md mb-lg editorial-shadow">
-  <h2 class="font-label-md text-primary mb-3">Add Category</h2>
+  <h2 class="font-label-md text-primary mb-3"><?= e(t('admin.add_category')) ?></h2>
   <form method="post" class="flex flex-col md:flex-row gap-3">
     <?= csrf_field() ?>
     <input type="hidden" name="action" value="create">
-    <input name="name" type="text" required placeholder="Category name" class="flex-1 bg-background border border-outline-variant/50 rounded-lg px-4 py-2 font-body-md">
-    <input name="sort_order" type="number" value="0" class="w-full md:w-32 bg-background border border-outline-variant/50 rounded-lg px-4 py-2 font-body-md" placeholder="Sort order">
-    <button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md" type="submit">Add</button>
+    <input name="name" type="text" required placeholder="<?= e(t('admin.category_name_placeholder')) ?>" class="flex-1 bg-background border border-outline-variant/50 rounded-lg px-4 py-2 font-body-md">
+    <input name="sort_order" type="number" value="0" class="w-full md:w-32 bg-background border border-outline-variant/50 rounded-lg px-4 py-2 font-body-md" placeholder="<?= e(t('admin.sort_order_placeholder')) ?>">
+    <button class="bg-accent text-on-accent px-6 py-2 rounded-full font-label-md" type="submit"><?= e(t('admin.add')) ?></button>
   </form>
 </div>
 
@@ -64,10 +64,10 @@ require __DIR__ . '/includes/layout_head.php';
   <table class="w-full text-left">
     <thead class="bg-surface-container-high">
       <tr>
-        <th class="p-3 font-label-md text-sm">Name</th>
-        <th class="p-3 font-label-md text-sm">Sort</th>
-        <th class="p-3 font-label-md text-sm">Items</th>
-        <th class="p-3 font-label-md text-sm text-right">Actions</th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_name')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_sort')) ?></th>
+        <th class="p-3 font-label-md text-sm"><?= e(t('admin.col_items')) ?></th>
+        <th class="p-3 font-label-md text-sm text-right"><?= e(t('admin.col_actions')) ?></th>
       </tr>
     </thead>
     <tbody>
@@ -81,13 +81,13 @@ require __DIR__ . '/includes/layout_head.php';
           <td class="p-3"><input name="sort_order" type="number" value="<?= (int)$cat['sort_order'] ?>" class="bg-transparent font-body-md w-16"></td>
           <td class="p-3 font-body-md"><?= (int)$cat['item_count'] ?></td>
           <td class="p-3 text-right whitespace-nowrap">
-            <button class="text-secondary font-label-md text-sm underline mr-3" type="submit">Save</button>
+            <button class="text-secondary font-label-md text-sm underline mr-3" type="submit"><?= e(t('admin.save')) ?></button>
         </form>
-        <form method="post" class="inline" onsubmit="return confirm('Delete this category?');">
+        <form method="post" class="inline" onsubmit="return confirm(<?= json_encode(t('admin.confirm_delete_category')) ?>);">
           <?= csrf_field() ?>
           <input type="hidden" name="action" value="delete">
           <input type="hidden" name="id" value="<?= (int)$cat['id'] ?>">
-          <button class="text-error font-label-md text-sm underline" type="submit">Delete</button>
+          <button class="text-error font-label-md text-sm underline" type="submit"><?= e(t('admin.delete')) ?></button>
         </form>
           </td>
       </tr>
