@@ -35,6 +35,7 @@ CREATE TABLE users (
 CREATE TABLE categories (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(80) NOT NULL,
+  name_en VARCHAR(80) NULL,
   slug VARCHAR(80) NOT NULL UNIQUE,
   sort_order INT NOT NULL DEFAULT 0
 ) ENGINE=InnoDB;
@@ -46,12 +47,16 @@ CREATE TABLE menu_items (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   category_id INT UNSIGNED NOT NULL,
   name VARCHAR(150) NOT NULL,
+  name_en VARCHAR(150) NULL,
   slug VARCHAR(150) NOT NULL UNIQUE,
   description TEXT NULL,
+  description_en TEXT NULL,
   price DECIMAL(10,2) NOT NULL DEFAULT 0,
   image VARCHAR(255) NULL,
   badge VARCHAR(60) NULL,
+  badge_en VARCHAR(60) NULL,
   ingredients VARCHAR(500) NULL,
+  ingredients_en VARCHAR(500) NULL,
   is_featured TINYINT(1) NOT NULL DEFAULT 0,
   is_available TINYINT(1) NOT NULL DEFAULT 1,
   sort_order INT NOT NULL DEFAULT 0,
@@ -149,13 +154,14 @@ INSERT INTO settings (`key`, `value`) VALUES
 ('site_name', 'Franca Dining & Coffee'),
 ('address', 'Plaza Cagancha 1124, Montevideo, Uruguay'),
 ('phone', '+598 2902 1124'),
-('email', 'hola@franca.uy'),
-('hours_mon_fri', '08:00 - 20:00'),
-('hours_sat', '09:00 - 21:00'),
-('hours_sun', '09:00 - 16:00'),
-('instagram', '@franca.mvd'),
-('map_lat', '-34.905800'),
-('map_lng', '-56.191400');
+('email', 'Cafe@franca.uy'),
+('hours_mon_fri', '07:30-19:30'),
+('hours_sat', '09:00-16:00'),
+('hours_sun', 'closed'),
+('instagram', '@franca'),
+('map_lat', '-34.906540803107035'),
+('map_lng', '-56.19178169498318'),
+('menu_notes_en', 'Our kitchen relies on organic and local products as much as possible. Our gluten-free products are not suitable for people with celiac disease due to cross-contamination. Glass bottles are Franca''s property — please leave them at the venue. Thank you so much!');
 
 -- ---------------------------------------------------------------
 -- Seed: admin account (email: admin@franca.uy / password: FrancaAdmin123!)
@@ -286,3 +292,93 @@ INSERT INTO orders (guest_name, guest_phone, service_mode, status, payment_statu
 INSERT INTO order_items (order_id, menu_item_id, quantity, unit_price) VALUES
 (1, (SELECT id FROM menu_items WHERE slug='chivito-franca'), 1, 460.00),
 (1, (SELECT id FROM menu_items WHERE slug='espresso'), 1, 130.00);
+
+
+-- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- English translations (name_en / description_en / badge_en /
+-- ingredients_en) for the ES/EN language switcher.
+-- ---------------------------------------------------------------
+UPDATE categories SET name_en='Coffee' WHERE id=1;
+UPDATE categories SET name_en='Mornings & Afternoons' WHERE id=2;
+UPDATE categories SET name_en='Midday' WHERE id=3;
+UPDATE categories SET name_en='Drinks' WHERE id=4;
+UPDATE categories SET name_en='Pantry' WHERE id=5;
+UPDATE categories SET name_en='Special Orders' WHERE id=6;
+
+UPDATE menu_items SET name_en='Espresso', description_en='Classic espresso.', badge_en=NULL, ingredients_en='Espresso' WHERE id=1;
+UPDATE menu_items SET name_en='Double Espresso', description_en='Double shot of espresso.', badge_en=NULL, ingredients_en='Espresso' WHERE id=2;
+UPDATE menu_items SET name_en='Extra Shot', description_en='Extra shot of espresso to add to any coffee.', badge_en=NULL, ingredients_en='Espresso' WHERE id=3;
+UPDATE menu_items SET name_en='Long Black', description_en='Double espresso + hot water, 180ml.', badge_en=NULL, ingredients_en='Espresso, Hot water' WHERE id=4;
+UPDATE menu_items SET name_en='Americano', description_en='Double espresso + hot water, 350ml.', badge_en=NULL, ingredients_en='Espresso, Hot water' WHERE id=5;
+UPDATE menu_items SET name_en='Americano XL', description_en='Triple espresso + hot water, 500ml.', badge_en=NULL, ingredients_en='Espresso, Hot water' WHERE id=6;
+UPDATE menu_items SET name_en='Filter Coffee', description_en='Origin of the day, ask your barista. Available methods: V60, French press, or Clever dripper. Various sizes, from $100 to $160.', badge_en=NULL, ingredients_en='Single-origin coffee' WHERE id=7;
+UPDATE menu_items SET name_en='Special Espresso', description_en='Special origin, ask the barista. $40 supplement over the base coffee.', badge_en=NULL, ingredients_en='Single-origin espresso' WHERE id=8;
+UPDATE menu_items SET name_en='Macchiato', description_en='Double espresso + milk foam, 100ml.', badge_en=NULL, ingredients_en='Espresso, Milk foam' WHERE id=9;
+UPDATE menu_items SET name_en='Cortado', description_en='Espresso + milk, 100ml or 160ml. From $150 to $160.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=10;
+UPDATE menu_items SET name_en='Flat White', description_en='Double espresso + milk, 180ml.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=11;
+UPDATE menu_items SET name_en='Cappuccino', description_en='Double espresso + milk, 240ml.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=12;
+UPDATE menu_items SET name_en='Latte', description_en='Espresso + milk, 350ml.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=13;
+UPDATE menu_items SET name_en='Double Shot Latte', description_en='Double espresso + milk, 350ml.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=14;
+UPDATE menu_items SET name_en='Mocha', description_en='Double espresso + Belgian chocolate + milk, 350ml.', badge_en=NULL, ingredients_en='Espresso, Belgian chocolate, Milk' WHERE id=15;
+UPDATE menu_items SET name_en='Latte XL', description_en='Double espresso + milk, 500ml.', badge_en=NULL, ingredients_en='Espresso, Milk' WHERE id=16;
+UPDATE menu_items SET name_en='Mocha XL', description_en='Triple espresso + Belgian chocolate + milk, 500ml.', badge_en=NULL, ingredients_en='Espresso, Belgian chocolate, Milk' WHERE id=17;
+UPDATE menu_items SET name_en='Iced Americano', description_en='Americano served over ice.', badge_en=NULL, ingredients_en='Espresso, Water, Ice' WHERE id=18;
+UPDATE menu_items SET name_en='Iced Flat White', description_en='Flat white served over ice.', badge_en=NULL, ingredients_en='Espresso, Milk, Ice' WHERE id=19;
+UPDATE menu_items SET name_en='Iced Latte', description_en='Latte served over ice.', badge_en=NULL, ingredients_en='Espresso, Milk, Ice' WHERE id=20;
+UPDATE menu_items SET name_en='Iced Cappuccino', description_en='Cappuccino served over ice.', badge_en=NULL, ingredients_en='Espresso, Milk, Ice' WHERE id=21;
+UPDATE menu_items SET name_en='Iced Mocha', description_en='Mocha served over ice.', badge_en=NULL, ingredients_en='Espresso, Belgian chocolate, Milk, Ice' WHERE id=22;
+UPDATE menu_items SET name_en='Espresso Tonic', description_en='Double espresso + artisanal tonic water.', badge_en=NULL, ingredients_en='Espresso, Artisanal tonic water' WHERE id=23;
+UPDATE menu_items SET name_en='Cold Brew', description_en='Cold-brewed coffee.', badge_en=NULL, ingredients_en='Cold-brewed coffee' WHERE id=24;
+UPDATE menu_items SET name_en='Franca Refresher', description_en='Soda, cold brew, and quince syrup.', badge_en=NULL, ingredients_en='Soda, Cold brew, Quince syrup' WHERE id=25;
+UPDATE menu_items SET name_en='Hot Belgian Chocolate', description_en='Hot Belgian chocolate. From $190 to $240 depending on size.', badge_en=NULL, ingredients_en='Belgian chocolate, Milk' WHERE id=26;
+UPDATE menu_items SET name_en='Matcha', description_en='Matcha tea with milk.', badge_en=NULL, ingredients_en='Matcha, Milk' WHERE id=27;
+UPDATE menu_items SET name_en='Coffee Cherry Tea', description_en='Coffee cherry husk infusion (cascara tea).', badge_en=NULL, ingredients_en='Coffee cherry husk' WHERE id=28;
+UPDATE menu_items SET name_en='Lemon Verbena Tea', description_en='Lemon verbena infusion.', badge_en=NULL, ingredients_en='Lemon verbena' WHERE id=29;
+UPDATE menu_items SET name_en='Black Tea', description_en='Black tea.', badge_en=NULL, ingredients_en='Black tea' WHERE id=30;
+UPDATE menu_items SET name_en='Green Tea', description_en='Green tea.', badge_en=NULL, ingredients_en='Green tea' WHERE id=31;
+UPDATE menu_items SET name_en='Affogato', description_en='Vanilla ice cream with a shot of espresso.', badge_en=NULL, ingredients_en='Vanilla ice cream, Espresso' WHERE id=32;
+UPDATE menu_items SET name_en='Country Bread | Jam | Cheese', description_en='Toasted sourdough country bread, homemade jam, butter or cream cheese.', badge_en=NULL, ingredients_en='Country bread, Homemade jam, Butter or cream cheese' WHERE id=33;
+UPDATE menu_items SET name_en='Yogurt | Fruit | Granola', description_en='Organic sugar-free yogurt, fresh seasonal fruit, homemade gluten-free and sugar-free granola, agave. Add peanut butter +$120.', badge_en='Vegan option', ingredients_en='Organic yogurt, Seasonal fruit, Homemade granola, Agave' WHERE id=34;
+UPDATE menu_items SET name_en='Pancakes', description_en='Wheat-flour-free oat pancakes, yogurt or honey, peanut butter, homemade berry jam, granola crunch. Vegan option with creamy cashew cream.', badge_en='Wheat-flour-free', ingredients_en='Oats, Yogurt or honey, Peanut butter, Berry jam, Granola' WHERE id=35;
+UPDATE menu_items SET name_en='Filled Croissant', description_en='Ham and cheese.', badge_en=NULL, ingredients_en='Croissant, Ham, Cheese' WHERE id=36;
+UPDATE menu_items SET name_en='Pressed Ham & Cheese', description_en='Milk bread, artisanal ham, and assorted cheeses.', badge_en=NULL, ingredients_en='Milk bread, Artisanal ham, Assorted cheeses' WHERE id=37;
+UPDATE menu_items SET name_en='Country Bread | Hummus | Tempeh', description_en='Country bread, beet hummus, seared organic tempeh, roasted vegetables.', badge_en='Vegan', ingredients_en='Country bread, Beet hummus, Tempeh, Roasted vegetables' WHERE id=38;
+UPDATE menu_items SET name_en='English Muffin', description_en='Filled with provolone cheese, artisanal ham, fried egg, and bacon.', badge_en=NULL, ingredients_en='Provolone cheese, Artisanal ham, Egg, Bacon' WHERE id=39;
+UPDATE menu_items SET name_en='Country Bread | Scrambled Eggs | Greens', description_en='Sourdough country bread, creamy scrambled eggs, fresh greens. Optional prosciutto add-on +$130.', badge_en=NULL, ingredients_en='Country bread, Scrambled eggs, Fresh greens' WHERE id=40;
+UPDATE menu_items SET name_en='Pancakes | Bacon | Honey | Butter', description_en='Wheat-flour-free oat pancakes, spicy honey, miso-cultured butter, and crispy bacon.', badge_en='Wheat-flour-free', ingredients_en='Oats, Spicy honey, Cultured butter, Crispy bacon' WHERE id=41;
+UPDATE menu_items SET name_en='Country Bread | Avocado | Soft-Boiled Egg', description_en='Sourdough country bread, lemon avocado, soft-boiled egg, sprouts. Optional vegan version with seared organic tempeh.', badge_en='Wheat-flour-free', ingredients_en='Country bread, Avocado, Lemon, Soft-boiled egg, Sprouts' WHERE id=42;
+UPDATE menu_items SET name_en='Chipá Sandwich', description_en='Chipá (cheese bread), cream cheese, roasted tomatoes, homemade pesto.', badge_en='Wheat-flour-free', ingredients_en='Chipá, Cream cheese, Roasted tomatoes, Homemade pesto' WHERE id=43;
+UPDATE menu_items SET name_en='Club Sandwich', description_en='Sandwich bread, ham, cheese, hard-boiled egg, mustard, tomato, and lettuce. Vegetarian option without ham, $350.', badge_en=NULL, ingredients_en='Sandwich bread, Ham, Cheese, Hard-boiled egg, Mustard, Tomato, Lettuce' WHERE id=44;
+UPDATE menu_items SET name_en='Regular Plate', description_en='One protein + 2 salads. Choose your protein: pork milanesa (veggie option: seitan), chicken tikka (vegan option: tempeh), roast beef, kale souffle, mushrooms, caramelized onion and parmesan cheese, or grilled seitan steak.', badge_en=NULL, ingredients_en='Choice of protein, 2 salads' WHERE id=45;
+UPDATE menu_items SET name_en='Large Plate', description_en='One protein + 3 salads. Same protein options as the Regular Plate.', badge_en=NULL, ingredients_en='Choice of protein, 3 salads' WHERE id=46;
+UPDATE menu_items SET name_en='Full Menu', description_en='Regular Plate + drink + dessert or coffee.', badge_en=NULL, ingredients_en='Regular Plate, Drink, Dessert or coffee' WHERE id=47;
+UPDATE menu_items SET name_en='Menu + Soup', description_en='Full Menu + soup of the week.', badge_en=NULL, ingredients_en='Regular Plate, Drink, Dessert or coffee, Soup of the week' WHERE id=48;
+UPDATE menu_items SET name_en='Savory Pie of the Week', description_en='One triangular slice. Ask about today''s filling. With a side: $340.', badge_en=NULL, ingredients_en='Homemade dough, Seasonal filling' WHERE id=49;
+UPDATE menu_items SET name_en='Franca Classic', description_en='Focaccia, aioli, gruyere cheese, fried egg, pickled beets, homemade sweet potato chips, green tahini. With a side: $550.', badge_en=NULL, ingredients_en='Focaccia, Aioli, Gruyere cheese, Egg, Pickled beets, Sweet potato chips' WHERE id=50;
+UPDATE menu_items SET name_en='Milanesa Sandwich', description_en='Focaccia bread, pork milanesa, aioli, hard-boiled egg, lettuce, and tomato. Vegetarian option with seitan milanesa. With a side: $570.', badge_en=NULL, ingredients_en='Focaccia, Pork milanesa, Aioli, Hard-boiled egg, Lettuce, Tomato' WHERE id=51;
+UPDATE menu_items SET name_en='Franca Chivito', description_en='Milk bread, roast beef, emmental cheese, fried egg, artisanal ham, mustard, tomato, mixed greens, and aioli. Vegetarian option with homemade seitan and vegan bacon +$430. With a side: $590.', badge_en='Most Popular', ingredients_en='Milk bread, Roast beef, Emmental cheese, Egg, Artisanal ham, Mustard, Greens' WHERE id=52;
+UPDATE menu_items SET name_en='Side Dish', description_en='Fried potatoes and sweet potatoes, or a small chopped salad, to add to any menu dish.', badge_en=NULL, ingredients_en='Fried potatoes and sweet potatoes, or salad' WHERE id=53;
+UPDATE menu_items SET name_en='Orange Juice', description_en='Fresh orange juice. 330ml / 500ml, from $180 to $240.', badge_en=NULL, ingredients_en='Orange' WHERE id=54;
+UPDATE menu_items SET name_en='Ginger Lemonade', description_en='330ml / 500ml, from $150 to $210.', badge_en=NULL, ingredients_en='Lemon, Ginger' WHERE id=55;
+UPDATE menu_items SET name_en='Hibiscus Water', description_en='330ml / 500ml, from $150 to $210.', badge_en=NULL, ingredients_en='Hibiscus flower' WHERE id=56;
+UPDATE menu_items SET name_en='Iced Tea', description_en='With notes of peach, honey, and lemon.', badge_en=NULL, ingredients_en='Tea, Peach, Honey, Lemon' WHERE id=57;
+UPDATE menu_items SET name_en='Carrot & Orange Juice', description_en='330ml / 500ml, from $180 to $240.', badge_en=NULL, ingredients_en='Carrot, Orange' WHERE id=58;
+UPDATE menu_items SET name_en='Green Detox Juice', description_en='330ml / 500ml, from $210 to $280.', badge_en=NULL, ingredients_en='Seasonal green vegetables' WHERE id=59;
+UPDATE menu_items SET name_en='Kombucha Bendita', description_en='250ml.', badge_en=NULL, ingredients_en='Artisanal kombucha' WHERE id=60;
+UPDATE menu_items SET name_en='Max Graff Artisanal Tonic Water', description_en='275ml.', badge_en=NULL, ingredients_en='Artisanal tonic water' WHERE id=61;
+UPDATE menu_items SET name_en='Mansa Ginger Ale', description_en='350ml.', badge_en=NULL, ingredients_en='Ginger ale' WHERE id=62;
+UPDATE menu_items SET name_en='Salus Water', description_en='Sparkling or still.', badge_en=NULL, ingredients_en='Mineral water' WHERE id=63;
+UPDATE menu_items SET name_en='Hue Light Lager', description_en='Malafama beer.', badge_en=NULL, ingredients_en='Lager beer' WHERE id=64;
+UPDATE menu_items SET name_en='Hue Pilsen Lager', description_en='Malafama beer.', badge_en=NULL, ingredients_en='Pilsen beer' WHERE id=65;
+UPDATE menu_items SET name_en='IPA Alboroto', description_en='Malafama beer.', badge_en=NULL, ingredients_en='IPA beer' WHERE id=66;
+UPDATE menu_items SET name_en='IPA Tas Loco', description_en='Malafama beer.', badge_en=NULL, ingredients_en='IPA beer' WHERE id=67;
+UPDATE menu_items SET name_en='Rooster Vermouth (Glass)', description_en='Glass of rosso or rose.', badge_en=NULL, ingredients_en='Vermouth' WHERE id=68;
+UPDATE menu_items SET name_en='Rooster Vermouth (Bottle)', description_en='Bottle of rosso or rose.', badge_en=NULL, ingredients_en='Vermouth' WHERE id=69;
+UPDATE menu_items SET name_en='Flavored Focaccia', description_en='House-made bread to take home.', badge_en=NULL, ingredients_en='Homemade focaccia' WHERE id=70;
+UPDATE menu_items SET name_en='Sourdough Country Bread', description_en='House-made bread to take home.', badge_en=NULL, ingredients_en='Country bread, Sourdough' WHERE id=71;
+UPDATE menu_items SET name_en='Individual Country Bread', description_en='House-made bread to take home.', badge_en=NULL, ingredients_en='Country bread' WHERE id=72;
+UPDATE menu_items SET name_en='Seis Montes Coffee', description_en='Origin of the month, 250g. Ask at the register for pricing.', badge_en=NULL, ingredients_en='Single-origin coffee, 250g' WHERE id=73;
+UPDATE menu_items SET name_en='Chocolate, Sweet Potato & Buckwheat Cake', description_en='Made to order.', badge_en=NULL, ingredients_en='Chocolate, Sweet potato, Buckwheat' WHERE id=74;
+UPDATE menu_items SET name_en='Almond & Dulce de Leche Dacquoise', description_en='Birthday cake. Made to order.', badge_en=NULL, ingredients_en='Almonds, Dulce de leche' WHERE id=75;
+UPDATE menu_items SET name_en='Carrot or Banana Loaf Cake', description_en='Made to order.', badge_en=NULL, ingredients_en='Carrot or banana' WHERE id=76;
