@@ -10,7 +10,7 @@ $itemsStmt = db()->prepare("SELECT * FROM menu_items WHERE category_id = ? AND i
 // bleed to the real viewport edges the same way the site header does, with no
 // vw/calc breakout hacks that risk phantom horizontal scroll.
 ob_start(); ?>
-<nav id="category-nav" class="sticky top-16 mt-16 z-30 w-full bg-surface/80 backdrop-blur-md shadow-[0_4px_20px_rgba(93,64,55,0.08)]">
+<nav id="category-nav" class="w-full">
   <div class="max-w-container-max mx-auto overflow-x-auto hide-scrollbar">
     <div class="flex gap-2 items-center w-max px-gutter py-3">
       <?php foreach ($categories as $i => $cat): ?>
