@@ -11,6 +11,7 @@ $htmlLang = function_exists('current_locale') ? current_locale() : 'es';
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title><?= e($pageTitle) ?></title>
+<link rel="icon" href="<?= BASE_URL ?>/assets/img/brand/logo.jpg" type="image/jpeg">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +39,7 @@ tailwind.config = {
         "surface-container-high": "#eae7e7", "surface-container-lowest": "#ffffff",
         "on-surface-variant": "#504441", "on-tertiary": "#ffffff", "surface-bright": "#fcf9f8",
         "on-secondary-fixed": "#082014", "on-secondary-fixed-variant": "#344c3e", "inverse-on-surface": "#f3f0f0",
-        "accent": "#FE8550", "accent-dark": "#D9622C", "on-accent": "#2c160e"
+        "accent": "#F3542C", "accent-dark": "#C2431F", "on-accent": "#2c160e"
       },
       borderRadius: { DEFAULT: "0.25rem", lg: "0.75rem", xl: "1.25rem", photo: "6px", full: "9999px" },
       spacing: { md: "24px", gutter: "24px", xs: "4px", sm: "12px", xl: "80px", "2xl": "112px", base: "8px", "container-max": "1200px", lg: "48px" },
