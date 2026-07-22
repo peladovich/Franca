@@ -35,7 +35,7 @@ function lang_switcher_html(string $extraClass = ''): string
 -->
 <div class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-[0_4px_20px_rgba(93,64,55,0.08)]">
   <header>
-    <div class="flex justify-between items-center px-gutter h-16 w-full max-w-container-max mx-auto">
+    <div class="flex justify-between items-center px-gutter h-16 w-full max-w-container-max 2xl:max-w-[1600px] mx-auto">
       <div class="flex items-center gap-4">
         <button class="md:hidden text-primary flex items-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <span class="material-symbols-outlined">menu</span>
@@ -83,4 +83,4 @@ function lang_switcher_html(string $extraClass = ''): string
   <?php endforeach; unset($_SESSION['flash']); ?>
 </div>
 <?php endif; ?>
-<main class="<?= isset($subNav) ? 'pt-[126px]' : 'pt-24' ?> pb-32 md:pb-16 max-w-container-max mx-auto px-gutter">
+<main class="<?= isset($subNav) ? 'pt-[126px]' : 'pt-24' ?> pb-32 md:pb-16 max-w-container-max 2xl:max-w-[1600px] mx-auto px-gutter">

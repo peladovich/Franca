@@ -11,7 +11,7 @@ $itemsStmt = db()->prepare("SELECT * FROM menu_items WHERE category_id = ? AND i
 // vw/calc breakout hacks that risk phantom horizontal scroll.
 ob_start(); ?>
 <nav id="category-nav" class="w-full">
-  <div class="max-w-container-max mx-auto overflow-x-auto hide-scrollbar">
+  <div class="max-w-container-max 2xl:max-w-[1600px] mx-auto overflow-x-auto hide-scrollbar">
     <div class="flex gap-2 items-center w-max px-gutter py-3">
       <?php foreach ($categories as $i => $cat): ?>
         <a href="#cat-<?= (int)$cat['id'] ?>" data-cat-pill data-target="cat-<?= (int)$cat['id'] ?>" class="cat-pill <?= $i === 0 ? 'is-active bg-primary text-on-primary border-primary' : 'bg-surface-container-low text-on-surface-variant border-outline-variant/40' ?> font-label-md text-label-md whitespace-nowrap px-4 py-2 rounded-full border"><?= e(mi_field($cat, 'name')) ?></a>

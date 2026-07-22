@@ -1,7 +1,7 @@
 <?php $active = $active ?? ''; ?>
 </main>
 <footer class="hidden md:block w-full py-xl px-gutter bg-surface-container-low border-t border-outline-variant/30">
-  <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-lg">
+  <div class="max-w-container-max 2xl:max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start gap-lg">
     <div class="flex flex-col gap-2">
       <span class="font-display-lg text-[32px] text-primary">Franca</span>
       <p class="font-caption text-caption text-on-surface-variant max-w-xs"><?= e(t('footer.tagline')) ?></p>

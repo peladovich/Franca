@@ -13,7 +13,7 @@ require __DIR__ . '/includes/header.php';
 
 <!-- Hero: full-viewport photo carousel, Flora-style -->
 <?php $heroSlides = ['real/interior-morning.jpg', 'real/storefront.jpg', 'real/interior-wide.jpg', 'real/waffles-trio.jpg']; ?>
-<section class="mb-2xl -mx-gutter md:mx-0">
+<section class="mb-2xl full-bleed">
   <div id="hero-carousel" class="relative overflow-hidden rounded-none md:rounded-photo min-h-[420px] h-[70vh] max-h-[620px]">
     <?php foreach ($heroSlides as $i => $slide): ?>
       <div class="hero-slide absolute inset-0 bg-cover bg-center <?= $i === 0 ? 'is-active' : '' ?>" data-hero-slide style="background-image: url('<?= img_url($slide) ?>')"></div>
@@ -120,7 +120,7 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Our Vibe -->
-<section class="max-w-container-max mx-auto mb-2xl">
+<section class="max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl">
   <span class="reveal font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em] block mb-3"><?= e(t('home.our_vibe')) ?></span>
   <div class="space-y-2xl">
     <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
@@ -147,8 +147,8 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Manifesto band, Culto-style -->
-<section class="reveal mb-2xl -mx-gutter md:mx-0 bg-gradient-to-br from-primary via-primary to-on-primary-fixed px-gutter md:px-2xl py-2xl">
-  <div class="max-w-container-max mx-auto">
+<section class="reveal mb-2xl full-bleed bg-gradient-to-br from-primary via-primary to-on-primary-fixed px-gutter md:px-2xl py-2xl">
+  <div class="max-w-container-max 2xl:max-w-[1600px] mx-auto">
     <span class="font-eyebrow text-[11px] text-white/60 uppercase tracking-[0.2em] block mb-4">FRANCA</span>
     <p class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white max-w-3xl"><?= e(t('footer.tagline')) ?></p>
   </div>
