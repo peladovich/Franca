@@ -30,7 +30,7 @@ require __DIR__ . '/includes/header.php';
     </div>
     <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2" id="hero-dots">
       <?php foreach ($heroSlides as $i => $slide): ?>
-        <button type="button" class="hero-dot <?= $i === 0 ? 'is-active' : '' ?>" data-hero-dot="<?= $i ?>" aria-label="<?= $i + 1 ?>"></button>
+        <button type="button" class="hero-progress <?= $i === 0 ? 'is-active' : '' ?>" data-hero-dot="<?= $i ?>" aria-label="<?= $i + 1 ?>"><span class="hero-progress-fill"></span></button>
       <?php endforeach; ?>
     </div>
     <div class="scroll-cue absolute bottom-6 right-6 hidden md:flex text-white/70">
@@ -48,7 +48,6 @@ require __DIR__ . '/includes/header.php';
 
   var current = 0;
   var timer = null;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function goTo(index) {
     slides[current].classList.remove('is-active');
@@ -58,9 +57,10 @@ require __DIR__ . '/includes/header.php';
     if (dots[current]) dots[current].classList.add('is-active');
   }
 
+  // The slide-change itself always runs on its timer; only the decorative
+  // zoom and progress-fill animations (CSS) back off under reduced-motion.
   function startTimer() {
     clearInterval(timer);
-    if (reduceMotion) return;
     timer = setInterval(function () { goTo(current + 1); }, 5000);
   }
 
@@ -125,7 +125,7 @@ require __DIR__ . '/includes/header.php';
   <div class="space-y-2xl">
     <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
       <div class="overflow-hidden aspect-[4/3]">
-        <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="<?= img_url('real/team-full.jpg') ?>" alt="Morning ritual at Franca">
+        <img class="vibe-img-el w-full h-full object-cover" src="<?= img_url('real/team-full.jpg') ?>" alt="Morning ritual at Franca">
       </div>
       <div class="space-y-2">
         <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('home.atmosphere_label')) ?></span>
@@ -135,7 +135,7 @@ require __DIR__ . '/includes/header.php';
     </div>
     <div class="reveal-group grid md:grid-cols-2 gap-lg items-center">
       <div class="md:order-2 overflow-hidden aspect-[4/3]">
-        <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="<?= img_url('real/team-kitchen.jpg') ?>" alt="Mindful craft at Franca">
+        <img class="vibe-img-el w-full h-full object-cover" src="<?= img_url('real/team-kitchen.jpg') ?>" alt="Mindful craft at Franca">
       </div>
       <div class="md:order-1 space-y-2">
         <span class="font-eyebrow text-[11px] text-accent-dark uppercase tracking-[0.2em]"><?= e(t('home.process_label')) ?></span>

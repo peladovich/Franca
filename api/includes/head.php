@@ -120,16 +120,27 @@ tailwind.config = {
   .scroll-cue { animation: scroll-cue-bounce 1.8s ease-in-out infinite; }
   @keyframes scroll-cue-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
 
-  @keyframes hero-settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+  /* Hero photo carousel: stacked slides cross-fade via opacity, plus a slow
+     Ken Burns zoom on whichever slide is active. The crossfade timing (auto-
+     advance) always runs; only the zoom is skipped under reduced-motion,
+     since a slow opacity fade isn't the kind of motion that spec targets. */
+  .hero-slide { opacity: 0; transition: opacity 1.2s ease; transform: scale(1.06); }
+  .hero-slide.is-active { opacity: 1; animation: hero-kenburns 6s ease-out forwards; }
+  @keyframes hero-kenburns { from { transform: scale(1.06); } to { transform: scale(1); } }
   @media (prefers-reduced-motion: reduce) {
-    [class*="animate-\[hero-settle"] { animation: none !important; transform: none !important; }
+    .hero-slide.is-active { animation: none; transform: scale(1); }
   }
 
-  /* Hero photo carousel: stacked slides cross-fade via opacity. */
-  .hero-slide { opacity: 0; transition: opacity 1.2s ease; }
-  .hero-slide.is-active { opacity: 1; }
-  .hero-dot { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,0.45); transition: background-color 0.3s ease, transform 0.3s ease; }
-  .hero-dot.is-active { background: #ffffff; transform: scale(1.25); }
+  /* Progress-bar slide indicators (Instagram-story style): the fill animates
+     across the same 5s window as the JS auto-advance timer, and restarts
+     cleanly whenever goTo() toggles the is-active class off and back on. */
+  .hero-progress { position: relative; width: 32px; height: 3px; border-radius: 9999px; background: rgba(255,255,255,0.3); overflow: hidden; }
+  .hero-progress-fill { position: absolute; inset: 0; width: 0%; background: #fff; border-radius: 9999px; }
+  .hero-progress.is-active .hero-progress-fill { animation: hero-progress-fill 5s linear forwards; }
+  @keyframes hero-progress-fill { from { width: 0%; } to { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-progress.is-active .hero-progress-fill { animation: none; width: 100%; }
+  }
 
   /* Marquee ticker: a duplicated track scrolls left forever, so the loop is seamless. */
   .marquee-track { display: flex; width: max-content; animation: marquee-scroll 28s linear infinite; }
@@ -137,6 +148,14 @@ tailwind.config = {
   @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none; }
+  }
+
+  /* Our Vibe photos: a slow zoom-settle as each panel reveals, plus its own hover zoom. */
+  .vibe-img-el { transform: scale(1.15); transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-group.is-visible .vibe-img-el { transform: scale(1); }
+  .reveal-group.is-visible .vibe-img-el:hover { transform: scale(1.06); }
+  @media (prefers-reduced-motion: reduce) {
+    .vibe-img-el, .reveal-group.is-visible .vibe-img-el { transform: none; transition: none; }
   }
 </style>
 <?= $extraHead ?? '' ?>
