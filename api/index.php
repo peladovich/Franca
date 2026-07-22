@@ -15,7 +15,7 @@ require __DIR__ . '/includes/header.php';
 <section class="mb-xl">
   <div class="relative overflow-hidden rounded-photo h-[420px] md:h-[500px] group">
     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-         style="background-image: url('<?= img_url('real/storefront.jpg') ?>')"></div>
+         style="background-image: url('<?= img_url('real/interior-morning.jpg') ?>')"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
     <div class="absolute bottom-0 left-0 p-md md:p-xl w-full">
       <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-2"><?= e(t('home.hero_title')) ?></h1>
@@ -67,7 +67,7 @@ require __DIR__ . '/includes/header.php';
   <div class="space-y-lg">
     <div class="grid md:grid-cols-2 gap-md items-center">
       <div class="rounded-photo overflow-hidden aspect-[4/3] shadow-lg">
-        <img class="w-full h-full object-cover" src="<?= img_url('real/interior-morning.jpg') ?>" alt="Morning ritual at Franca">
+        <img class="w-full h-full object-cover" src="<?= img_url('real/storefront.jpg') ?>" alt="Morning ritual at Franca">
       </div>
       <div class="space-y-2">
         <span class="font-label-md text-accent-dark uppercase tracking-widest"><?= e(t('home.atmosphere_label')) ?></span>
