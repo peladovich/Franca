@@ -147,7 +147,7 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Manifesto band, Culto-style -->
-<section class="reveal mb-2xl -mx-gutter md:mx-0 bg-primary px-gutter md:px-2xl py-2xl">
+<section class="reveal mb-2xl -mx-gutter md:mx-0 bg-gradient-to-br from-primary via-primary to-on-primary-fixed px-gutter md:px-2xl py-2xl">
   <div class="max-w-container-max mx-auto">
     <span class="font-eyebrow text-[11px] text-white/60 uppercase tracking-[0.2em] block mb-4">FRANCA</span>
     <p class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white max-w-3xl"><?= e(t('footer.tagline')) ?></p>
@@ -155,7 +155,7 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Newsletter -->
-<section class="reveal px-gutter py-2xl bg-secondary-container mb-2xl">
+<section class="reveal px-gutter py-2xl bg-gradient-to-br from-secondary-container via-secondary-container to-background mb-2xl">
   <div class="max-w-lg mx-auto text-center space-y-md">
     <span class="font-eyebrow text-[11px] text-on-secondary-container uppercase tracking-[0.2em] block"><?= e(t('home.newsletter_title')) ?></span>
     <p class="font-body-md text-on-secondary-container"><?= e(t('home.newsletter_text')) ?></p>
