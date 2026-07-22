@@ -37,7 +37,7 @@ function lang_switcher_html(string $extraClass = ''): string
   <header>
     <div class="flex justify-between items-center px-gutter h-16 w-full max-w-container-max mx-auto">
       <div class="flex items-center gap-4">
-        <button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <button class="md:hidden text-primary flex items-center" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <span class="material-symbols-outlined">menu</span>
         </button>
         <a href="<?= BASE_URL ?>/index.php" class="flex items-center gap-1.5 font-wordmark font-extrabold text-[22px] leading-none tracking-tight text-primary">
