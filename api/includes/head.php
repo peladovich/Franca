@@ -112,11 +112,9 @@ tailwind.config = {
   .reveal-group.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
   .reveal-group.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
   .reveal-group.is-visible > *:nth-child(6) { transition-delay: 0.4s; }
-
-  /* Wipe-reveal: a curtain that uncovers the element left-to-right, for a more
-     designed entrance than a plain fade -- used on the Popular Today photos. */
-  .reveal-wipe { clip-path: inset(0 100% 0 0); transition: clip-path 0.9s cubic-bezier(0.65,0,0.35,1); }
-  .reveal-wipe.is-visible { clip-path: inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-group > * { opacity: 1; transform: none; transition: none; }
+  }
 
   /* Underline-draw link, used for inline editorial links (Culto/Flora-style). */
   .link-underline { position: relative; }
@@ -130,10 +128,15 @@ tailwind.config = {
   @keyframes scroll-cue-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
 
   /* Hero photo carousel: stacked slides cross-fade via opacity, plus a slow
-     Ken Burns zoom on whichever slide is active. */
+     Ken Burns zoom on whichever slide is active. The crossfade timing (auto-
+     advance) always runs; only the zoom is skipped under reduced-motion,
+     since a slow opacity fade isn't the kind of motion that spec targets. */
   .hero-slide { opacity: 0; transition: opacity 1.2s ease; transform: scale(1.06); }
   .hero-slide.is-active { opacity: 1; animation: hero-kenburns 6s ease-out forwards; }
   @keyframes hero-kenburns { from { transform: scale(1.06); } to { transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide.is-active { animation: none; transform: scale(1); }
+  }
 
   /* Progress-bar slide indicators (Instagram-story style): the fill animates
      across the same 5s window as the JS auto-advance timer, and restarts
@@ -142,9 +145,14 @@ tailwind.config = {
   .hero-progress-fill { position: absolute; inset: 0; width: 0%; background: #fff; border-radius: 9999px; }
   .hero-progress.is-active .hero-progress-fill { animation: hero-progress-fill 5s linear forwards; }
   @keyframes hero-progress-fill { from { width: 0%; } to { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-progress.is-active .hero-progress-fill { animation: none; width: 100%; }
+  }
 
   /* Marquee ticker: a duplicated track scrolls left forever, so the loop is
-     seamless. Hover/focus pauses it, but it always animates otherwise. */
+     seamless. Always animates (hover/focus still pauses it) -- like the hero
+     carousel's slide timer, this always runs regardless of reduced-motion so
+     it doesn't silently sit frozen for anyone with that OS setting on. */
   .marquee-track { display: flex; width: max-content; animation: marquee-scroll 28s linear infinite; }
   .marquee-track:hover, .marquee-track:focus-within { animation-play-state: paused; }
   @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -153,6 +161,9 @@ tailwind.config = {
   .vibe-img-el { transform: scale(1.15); transition: transform 1.2s cubic-bezier(0.16,1,0.3,1); }
   .reveal-group.is-visible .vibe-img-el { transform: scale(1); }
   .reveal-group.is-visible .vibe-img-el:hover { transform: scale(1.06); }
+  @media (prefers-reduced-motion: reduce) {
+    .vibe-img-el, .reveal-group.is-visible .vibe-img-el { transform: none; transition: none; }
+  }
 
   /* Scroll parallax: the image sits taller than its frame and drifts as the
      page scrolls past it (see footer.php for the scroll-driven JS). Runs

@@ -99,7 +99,7 @@ require __DIR__ . '/includes/header.php';
   <div class="grid grid-cols-2 md:grid-cols-3 gap-x-md gap-y-lg">
     <?php foreach ($featured as $item): ?>
     <div class="group">
-      <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>" class="reveal-wipe block relative aspect-square overflow-hidden bg-surface-container-low mb-3">
+      <a href="<?= BASE_URL ?>/dish.php?id=<?= (int)$item['id'] ?>" class="block relative aspect-square overflow-hidden bg-surface-container-low mb-3">
         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="<?= item_photo_url($item) ?>" alt="<?= e(mi_field($item, 'name')) ?>">
         <form method="post" action="<?= BASE_URL ?>/cart.php" class="absolute bottom-2 right-2" onclick="event.stopPropagation()">
           <?= csrf_field() ?>
