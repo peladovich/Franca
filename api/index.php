@@ -76,7 +76,7 @@ require __DIR__ . '/includes/header.php';
 
 <!-- Marquee ticker, Culto-style -->
 <?php $marqueeItems = [t('home.hero_title'), t('menu.eyebrow'), 'Montevideo, Uruguay']; ?>
-<section class="reveal mb-2xl -mx-gutter md:mx-0 overflow-hidden bg-primary py-3">
+<section class="reveal full-bleed mb-2xl overflow-hidden bg-primary py-3">
   <div class="marquee-track">
     <?php for ($rep = 0; $rep < 2; $rep++): ?>
       <?php foreach ($marqueeItems as $mi): ?>

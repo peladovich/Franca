@@ -58,6 +58,29 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   targets.forEach(function (el) { observer.observe(el); });
 })();
+
+// .full-bleed's CSS (width:100vw + calc(50%-50vw) margins) is off by half the
+// scrollbar's width on desktop browsers with classic (non-overlay) scrollbars,
+// since vw includes the scrollbar but the layout box doesn't. Nudge it exact.
+(function () {
+  var els = document.querySelectorAll('.full-bleed');
+  if (!els.length) return;
+  function apply() {
+    var vw = document.documentElement.clientWidth;
+    els.forEach(function (el) {
+      var currentMarginLeft = parseFloat(getComputedStyle(el).marginLeft) || 0;
+      var correction = -el.getBoundingClientRect().left;
+      el.style.width = vw + 'px';
+      el.style.marginLeft = (currentMarginLeft + correction) + 'px';
+    });
+  }
+  apply();
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(apply, 150);
+  });
+})();
 </script>
 </body>
 </html>

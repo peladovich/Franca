@@ -64,7 +64,14 @@ tailwind.config = {
 }
 </script>
 <style>
+  html, body { overflow-x: hidden; }
   body { min-height: max(884px, 100dvh); -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+  /* True edge-to-edge breakout regardless of viewport width, for sections
+     nested inside <main>'s max-w-container-max column. Safe against the
+     phantom-horizontal-scroll issue vw-based breakouts can cause because
+     html/body clip any overflow above (a deliberate, scoped safety net --
+     nothing on this site relies on horizontal scroll at the page level). */
+  .full-bleed { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
