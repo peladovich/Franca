@@ -43,7 +43,7 @@
 </nav>
 <script>
 (function () {
-  var targets = document.querySelectorAll('.reveal, .reveal-group');
+  var targets = document.querySelectorAll('.reveal, .reveal-group, .reveal-wipe');
   if (!targets.length) return;
   if (!('IntersectionObserver' in window)) {
     targets.forEach(function (el) { el.classList.add('is-visible'); });
@@ -105,6 +105,40 @@
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
   update();
+})();
+
+// Count-up numbers: [data-count-to="15" data-count-suffix="+"] animates its
+// own text from 0 to the target once it scrolls into view, then stops.
+(function () {
+  var counters = document.querySelectorAll('[data-count-to]');
+  if (!counters.length) return;
+  function animate(el) {
+    var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+    var suffix = el.getAttribute('data-count-suffix') || '';
+    var duration = 1100;
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(animate);
+  } else {
+    var counterObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { counterObserver.observe(el); });
+  }
 })();
 </script>
 </body>

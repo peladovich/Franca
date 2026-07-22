@@ -26,19 +26,19 @@ require __DIR__ . '/includes/header.php';
 <!-- Stats -->
 <section class="reveal-group max-w-container-max 2xl:max-w-[1600px] mx-auto mb-2xl grid grid-cols-2 md:grid-cols-4 gap-md">
   <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
-    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">2023</p>
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark" data-count-to="2023">0</p>
     <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_founded_label')) ?></p>
   </div>
   <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
-    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">15+</p>
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark" data-count-to="15" data-count-suffix="+">0</p>
     <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_team_label')) ?></p>
   </div>
   <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
-    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">100%</p>
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark" data-count-to="100" data-count-suffix="%">0</p>
     <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_profit_label')) ?></p>
   </div>
   <div class="bg-surface-container-lowest rounded-photo p-lg text-center editorial-shadow">
-    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark">3</p>
+    <p class="font-display-lg-mobile text-display-lg-mobile text-accent-dark" data-count-to="3">0</p>
     <p class="font-eyebrow text-[10px] text-on-surface-variant uppercase tracking-[0.15em] mt-1"><?= e(t('about.stat_causes_label')) ?></p>
   </div>
 </section>
